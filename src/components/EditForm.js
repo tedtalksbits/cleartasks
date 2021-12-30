@@ -9,13 +9,12 @@ const closeIconPosition = {
    top: '-5.5rem'
 }
 const EditForm = ({ id }) => {
-   const API = 'https://college-courses-api.herokuapp.com/upcoming_courses'
 
    const [todo, setTodo] = useState([])
    const fetchTodo = async () => {
-      const data = await fetchById(`${API}/${id}`)
+      const data = await fetchById(`${process.env.REACT_APP_URL}${id}`)
       setTodo(data)
-      console.log(data);
+      // console.log(data);
    }
    useEffect(() => {
       fetchTodo()
@@ -27,7 +26,7 @@ const EditForm = ({ id }) => {
       navigate('/')
    }
    const saveTodo = async () => {
-      await todoUpdate(`${API}/${id}`, todo)
+      await todoUpdate(`${process.env.REACT_APP_URL}${id}`, todo)
       goHome()
    }
    return (

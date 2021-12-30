@@ -9,12 +9,10 @@ const RenderTable = ({ search, sort }) => {
 
    const [data, setData] = useState([])
    const { updateUI, setUpdateUI } = useUIState()
-   const endpoint = 'https://college-courses-api.herokuapp.com/upcoming_courses'
-
 
    const fetchItems = async () => {
       try {
-         const res = await fetch(endpoint, {
+         const res = await fetch(process.env.REACT_APP_URL, {
             method: 'GET'
          })
          const result = await res.json()
@@ -68,16 +66,13 @@ const RenderTable = ({ search, sort }) => {
    }
 
 
-
-   const API = 'https://college-courses-api.herokuapp.com/upcoming_courses/'
-
    const updateStatusTodo = async (id, obj) => {
-      await todoUpdate(`${API}${id}`, obj);
+      await todoUpdate(`${process.env.REACT_APP_URL}${id}`, obj);
       setUpdateUI()
    }
 
    const handleDelete = async (id) => {
-      await todoDelete(`${API}${id}`)
+      await todoDelete(`${process.env.REACT_APP_URL}${id}`)
       setUpdateUI()
    }
    return (

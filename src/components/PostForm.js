@@ -35,7 +35,7 @@ const PostForm = () => {
 
       if (newTodo.title) {
          try {
-            await fetch('https://college-courses-api.herokuapp.com/upcoming_courses', {
+            await fetch(process.env.REACT_APP_URL, {
                method: 'POST',
                headers: {
                   "Content-Type": "application/json"
