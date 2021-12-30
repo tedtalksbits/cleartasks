@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/tedtalksbits/taskify">
     <img src="/src/screenshots/taskify.png" alt="Logo" width="100%" height="280" style='object-fit: cover; border-radius: 10px'>
   </a>
 
@@ -14,7 +14,7 @@
     <br />
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/tedtalksbits/taskify">View Demo</a>
   </p>
 </div>
 
