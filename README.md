@@ -1,70 +1,153 @@
-# Getting Started with Create React App
+<div id="top"></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="/src/screenshots/taskify.png" alt="Logo" width="100%" height="280" style='object-fit: cover; border-radius: 10px'>
+  </a>
 
-## Available Scripts
+  <h3 align="center">Taskify: An app inspired by Notion</h3>
 
-In the project directory, you can run:
+  <p align="center">
+    Furthering my React Developement by cloning some of my favorite apps
+    <br />
+    <br />
+    <br />
+    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+  </p>
+</div>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="/src/screenshots/taskify-2.gif" alt="Logo" width="100%" height="480" style='object-fit: cover; border-radius: 10px'>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+As a right of passage, a couple months ago while learning React I made a simple todo app. After getting familiar with more advanced topics I have decided to revisit this important milestone in my React journey and recreate the app into something more useful and way better looking. ✨ 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In essence:
+* This app signifies the progress I have made through the months since I first pushed this repo
+* Initially this app was as simple as a text field and a couple of buttons. Now its a beautifully designed app many of the functionalities of a final product (relatively speaking ofcourse)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### Built With
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* [React.js](https://reactjs.org/)
+* [Styled Components](https://styled-components.com/)
+* [MOCK Rest API provided by JSON Server](https://www.npmjs.com/package/json-server)
+* [Hosted by Heroku](https://id.heroku.com/)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+<!-- GETTING STARTED -->
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This app only have a few dependencies (very lightweight) 
+namely: 
+- styled-components [learn more](https://www.npmjs.com/package/styled-components)
+- react-router-dom [learn more](https://www.npmjs.com/package/react-router-dom/v/6.0.0-beta.0)
 
-### Advanced Configuration
+### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+You will need the latest version of node
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-### Deployment
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+_To run this app locally_
 
-### `npm run build` fails to minify
+1. Download or clone this repo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```sh
+   git clone https://github.com/tedtalks_bits/todo-app.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Run the app locally `config.js`
+   ```sh
+   npm start
+   ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] Add Dynamic/ responsive grid system
+- [x] Full CRUD features
+- [ ] Refactor
+- [ ] User Customizabiltity 
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<!-- CONTACT -->
+## Contact
+
+Tedane Blake - [@iam_tcb](https://twitter.com/iam_tcb)
+
+My website: [https://tedtalksbits.github.io/tedaneblakedev/](https://tedtalksbits.github.io/tedaneblakedev/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+Like I mention at the top of the page, This app was heavily influenced by [Notion](https://www.notion.so/). I enjoy using Notion, I just wish there was a lite version because how robust(cluttered) the app is. So I was inspired to revamp an old todo app to convert it to Taskify☑️.
+
+* [Notion](https://www.notion.so/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
