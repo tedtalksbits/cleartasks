@@ -6,21 +6,17 @@ const Container = styled.div`
    visibility: ${({ when }) => when ? 'visible' : 'hidden'};
    z-index: ${({ when }) => when ? '2000' : ''};
    position: fixed;
-   /* background: ${props => props.theme.surface3}; */
-   /* border-radius: 5px; */
-   /* border: 1px rgba(0,0,0, 0.2) solid; */
-   /* padding: .875rem; */
    color: ${props => props.theme.text1};
    animation: ${({ when }) => when ? 'fadeIn' : 'fadeOut'} .4s linear;
    animation-fill-mode: both;
-   /* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; */
    transition: visibility .4s linear;
    left: 1rem;
    right: 1rem;
-   top: calc(50vh/2); // banner is 25vh so 75 vh is available - the midpoint of 75 is 75/2
+   top: 0; // banner is 25vh so 75 vh is available - the midpoint of 75 is 75/2
+   /* bottom: 0; */
    max-inline-size: 40rem;
    margin: auto;
-
+   overflow: auto;
    @keyframes fadeIn {
       0% {
          opacity: 0;

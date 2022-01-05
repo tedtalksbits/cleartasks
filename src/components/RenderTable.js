@@ -77,7 +77,7 @@ const RenderTable = ({ search, sort }) => {
    }
    return (
       <GridContainer>
-
+         {!data && <h1>Loading...</h1>}
          <GridItem className='todo-head'><Highlight className='danger'>To Do</Highlight></GridItem>
          <GridItem className='doing-head'><Highlight className='warning'>Doing</Highlight></GridItem>
          <GridItem className='done-head'><Highlight className='success'>Done</Highlight></GridItem>

@@ -79,8 +79,12 @@ const Todo = ({ img, title, text, todoDelete, todoDone, todoDoing, todoId, date 
 
    return (
       <TodoItem onDoubleClick={navigateToEdit} className='todo' onMouseEnter={() => setShowIcons(true)} onMouseLeave={() => setShowIcons(false)}>
+         <div className="todo_top" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+
+            <p className="bold">{title}</p>
+            <Icon when={showIcons} onClick={navigateToEdit} className="fa fa-ellipsis-v" aria-hidden="true"></Icon>
+         </div>
          {img && <Picture src={img} alt='todo' />}
-         <p className="bold">{title}</p>
          <p className="custom-text">{text}</p>
 
          <FlexItems className="controls" >

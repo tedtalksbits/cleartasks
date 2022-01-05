@@ -1,6 +1,7 @@
 import React, { useReducer, useState } from 'react'
 import styled from 'styled-components'
 import { useModal } from '../context/ModalContext'
+import { ControlledModal } from './ControlledModal'
 import { Input } from './Form'
 import { IconButton } from './IconButton'
 import Modal from './Modal'
@@ -9,8 +10,8 @@ import PostForm from './PostForm'
 import RenderTable from './RenderTable'
 
 const iconButtonPostion = {
-   right: '2rem',
-   top: '3rem'
+   right: '1rem',
+   top: '.4rem'
 }
 
 
@@ -30,7 +31,7 @@ const ListHeader = styled.div`
 const TodoList = () => {
 
    const [search, setSearch] = useState('');
-   const { open, setOpen } = useModal();
+   const [showModal, setShowModal] = useState(false)
    const [sort, setSort] = useReducer(((sort) => !sort), true)
 
    return (
@@ -50,16 +51,16 @@ const TodoList = () => {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                />
-               <Button onClick={() => setOpen(!open)} >New</Button>
+               <Button onClick={() => setShowModal(true)} >New</Button>
             </div>
          </ListHeader>
 
-         <Modal className="modal" when={open}>
-            <IconButton onClick={() => setOpen(!open)} style={iconButtonPostion} >
+         <ControlledModal className="modal" isVisible={showModal} onClose={() => setShowModal(false)} >
+            <IconButton onClick={() => setShowModal(false)} style={iconButtonPostion} >
                <i className="fa fa-times" aria-hidden="true"></i>
             </IconButton>
             <PostForm />
-         </Modal >
+         </ControlledModal >
          <hr />
 
          <RenderTable search={search} sort={sort} />

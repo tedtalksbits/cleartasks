@@ -29,7 +29,7 @@ const inputStyles = css`
    }
 `
 export const Form = styled.form`
-   margin: 2rem 0;
+   /* margin: 2rem 0; */
    border-radius: 5px;
    padding: 1rem 1.5rem;
    background: ${props => props.theme.surface2};

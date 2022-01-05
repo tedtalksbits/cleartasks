@@ -58,8 +58,6 @@ const PostForm = () => {
 
    return (
       <Form id='todoForm' onSubmit={e => { e.preventDefault() }}>
-         <h1 className="custom-heading form-heading">Create Form</h1>
-         <hr />
          <FormField
             icon={<i className="fa fa-font"></i>}
             title='Title'
@@ -98,12 +96,12 @@ const PostForm = () => {
             <TextArea
                name='Text'
                id='Text'
-               rows='10'
+               rows='3'
                className='field-input'
                placeholder='Empty'
                value={newTodo.text}
                onChange={(e) => setNewTodo({ ...newTodo, text: e.target.value })}
-
+               autoFocus
             />
          </FormField>
          <Button

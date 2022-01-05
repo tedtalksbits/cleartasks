@@ -46,6 +46,7 @@ const EditForm = ({ id }) => {
                value={todo.title}
                onChange={(e) => setTodo({ ...todo, title: e.target.value })}
                required
+               autoFocus
 
             />
          </FormField>

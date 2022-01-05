@@ -2,8 +2,6 @@ import React from 'react'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { darkTheme } from './theme'
-import { useModal } from './context/ModalContext'
-import { ModalBackdrop } from './components/ModalBackdrop'
 import Home from './pages/Home'
 import New from './pages/New'
 import Edit from './pages/Edit'
@@ -38,35 +36,12 @@ const GlobalStyles = createGlobalStyle`
 `
 const Main = styled.main``
 const App = () => {
-  const { open, setOpen } = useModal();
   const theme = darkTheme;
-
-
-  // useEffect(() => {
-  //   setModalOverflow(open)
-  // }, [open])
-
-
-  // function setModalOverflow(isModalOpen) {
-  //   const body = document.getElementById('body');
-
-  //   if (isModalOpen) {
-  //     body.style.overflow = 'hidden';
-  //   }
-  //   else {
-  //     body.style.overflow = '';
-
-  //   }
-  // }
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
         <Main>
-          {open &&
-            <ModalBackdrop onClick={() => setOpen(false)} className="modal-backdrop"></ModalBackdrop>
-          }
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route path='/new' element={<New />} />
