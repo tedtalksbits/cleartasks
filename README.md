@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/tedtalksbits/taskify/blob/main/src/screenshots/taskify-2.gif">
-    <img src="/src/screenshots/taskify.png" alt="Logo" width="100%" height="280" style='object-fit: cover; border-radius: 10px'>
+    <img src="/src/screenshots/taskify.png" alt="Logo" width="280" height="280" style='object-fit: cover;'>
   </a>
 
   <h3 align="center">Taskify: An app inspired by Notion</h3>
@@ -51,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="/src/screenshots/taskify-2.gif" alt="Logo" width="100%" height="480" style='object-fit: cover; border-radius: 10px'>
+<img src="/src/screenshots/taskify-2.gif" alt="Logo" width="480" height="480" style='object-fit: cover;'>
 
 As a right of passage, a couple months ago while learning React I made a simple todo app. After getting familiar with more advanced topics I have decided to revisit this important milestone in my React journey and recreate the app into something more useful and way better looking. ✨ 
 
