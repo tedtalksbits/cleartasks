@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/tedtalksbits/taskify">
+  <a href="https://github.com/tedtalksbits/taskify/blob/main/src/screenshots/taskify-2.gif">
     <img src="/src/screenshots/taskify.png" alt="Logo" width="100%" height="280" style='object-fit: cover; border-radius: 10px'>
   </a>
 
