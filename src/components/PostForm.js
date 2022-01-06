@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useModal } from '../context/ModalContext'
 import FormField, { Form, Input, TextArea } from './Form'
 import { Button } from './PageComponents'
 import { v4 as uuidv4 } from 'uuid';
 import { useUIState } from '../context/UpdateUiContext';
 const PostForm = () => {
-   const { setOpen } = useModal();
+
+   const URL = 'https://college-courses-api.herokuapp.com/upcoming_courses/'
    const { setUpdateUI } = useUIState()
    const [newTodo, setNewTodo] = useState({
       title: "",
@@ -35,7 +35,7 @@ const PostForm = () => {
 
       if (newTodo.title) {
          try {
-            await fetch(process.env.REACT_APP_URL, {
+            await fetch(URL, {
                method: 'POST',
                headers: {
                   "Content-Type": "application/json"
@@ -44,7 +44,6 @@ const PostForm = () => {
             })
             resetForm()
             setUpdateUI();
-            setOpen(false);
          } catch (error) {
             console.log(error);
          }
@@ -70,6 +69,7 @@ const PostForm = () => {
                value={newTodo.title}
                onChange={(e) => setNewTodo({ ...newTodo, title: e.target.value })}
                required
+               autoFocus
 
             />
          </FormField>
@@ -101,7 +101,6 @@ const PostForm = () => {
                placeholder='Empty'
                value={newTodo.text}
                onChange={(e) => setNewTodo({ ...newTodo, text: e.target.value })}
-               autoFocus
             />
          </FormField>
          <Button

@@ -3,7 +3,6 @@ import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { darkTheme } from './theme'
 import Home from './pages/Home'
-import New from './pages/New'
 import Edit from './pages/Edit'
 
 
@@ -43,9 +42,8 @@ const App = () => {
       <Router>
         <Main>
           <Routes>
-            <Route exact path='/' element={<Home />} />
-            <Route path='/new' element={<New />} />
-            <Route path='/edit/:id' element={<Edit />} />
+            <Route exact path='/taskify' element={<Home />} />
+            <Route path='/taskify/edit/:id' element={<Edit />} />
           </Routes>
         </Main>
       </Router>

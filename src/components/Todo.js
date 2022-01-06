@@ -73,7 +73,7 @@ const Todo = ({ img, title, text, todoDelete, todoDone, todoDoing, todoId, date 
 
    const navigate = useNavigate();
    const navigateToEdit = () => {
-      navigate(`/edit/${todoId}`);
+      navigate(`/taskify/edit/${todoId}`);
    }
    const [showIcons, setShowIcons] = useState(false);
 

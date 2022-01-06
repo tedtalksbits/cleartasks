@@ -9,10 +9,10 @@ const closeIconPosition = {
    top: '-5.5rem'
 }
 const EditForm = ({ id }) => {
-
+   const URL = 'https://college-courses-api.herokuapp.com/upcoming_courses/'
    const [todo, setTodo] = useState([])
    const fetchTodo = async () => {
-      const data = await fetchById(`${process.env.REACT_APP_URL}${id}`)
+      const data = await fetchById(`${URL}${id}`)
       setTodo(data)
       // console.log(data);
    }
@@ -23,10 +23,10 @@ const EditForm = ({ id }) => {
    const navigate = useNavigate()
 
    function goHome() {
-      navigate('/')
+      navigate('/taskify')
    }
    const saveTodo = async () => {
-      await todoUpdate(`${process.env.REACT_APP_URL}${id}`, todo)
+      await todoUpdate(`${URL}${id}`, todo)
       goHome()
    }
    return (
@@ -89,7 +89,7 @@ const EditForm = ({ id }) => {
                   name='status'
                   id='Todo'
                   checked={!todo.done && !todo.doing}
-                  value={true}
+                  value={!todo.done && !todo.doing ? true : false}
                   onChange={() => setTodo({ ...todo, done: false, doing: false })}
                />
             </label>
@@ -100,7 +100,7 @@ const EditForm = ({ id }) => {
                   name='status'
                   id='Doing'
                   checked={todo.doing}
-                  value={true}
+                  value={todo.doing}
                   onChange={() => setTodo({ ...todo, done: false, doing: true })}
                />
             </label>
@@ -111,8 +111,8 @@ const EditForm = ({ id }) => {
                   name='status'
                   id='Done'
                   checked={todo.done}
-                  value={true}
-                  onChange={(e) => setTodo({ ...todo, done: true, doing: false })}
+                  value={todo.done}
+                  onChange={() => setTodo({ ...todo, done: true, doing: false })}
                />
             </label>
          </div>

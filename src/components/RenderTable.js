@@ -6,13 +6,13 @@ import { Highlight } from './PageComponents'
 import Todo from './Todo'
 
 const RenderTable = ({ search, sort }) => {
-
+   const URL = 'https://college-courses-api.herokuapp.com/upcoming_courses/'
    const [data, setData] = useState([])
    const { updateUI, setUpdateUI } = useUIState()
 
    const fetchItems = async () => {
       try {
-         const res = await fetch(process.env.REACT_APP_URL, {
+         const res = await fetch(URL, {
             method: 'GET'
          })
          const result = await res.json()
@@ -67,17 +67,16 @@ const RenderTable = ({ search, sort }) => {
 
 
    const updateStatusTodo = async (id, obj) => {
-      await todoUpdate(`${process.env.REACT_APP_URL}${id}`, obj);
+      await todoUpdate(`${URL}${id}`, obj);
       setUpdateUI()
    }
 
    const handleDelete = async (id) => {
-      await todoDelete(`${process.env.REACT_APP_URL}${id}`)
+      await todoDelete(`${URL}${id}`)
       setUpdateUI()
    }
    return (
       <GridContainer>
-         {!data && <h1>Loading...</h1>}
          <GridItem className='todo-head'><Highlight className='danger'>To Do</Highlight></GridItem>
          <GridItem className='doing-head'><Highlight className='warning'>Doing</Highlight></GridItem>
          <GridItem className='done-head'><Highlight className='success'>Done</Highlight></GridItem>
