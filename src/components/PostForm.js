@@ -3,7 +3,7 @@ import FormField, { Form, Input, TextArea } from './Form'
 import { Button } from './PageComponents'
 import { v4 as uuidv4 } from 'uuid';
 import { useUIState } from '../context/UpdateUiContext';
-const PostForm = () => {
+const PostForm = ({ setShowForm }) => {
 
    const URL = 'https://college-courses-api.herokuapp.com/upcoming_courses/'
    const { setUpdateUI } = useUIState()
@@ -105,7 +105,7 @@ const PostForm = () => {
          </FormField>
          <Button
             style={{ display: 'block', marginLeft: 'auto' }}
-            onClick={() => { postTodo(); }}
+            onClick={() => { postTodo(); setShowForm(false) }}
          >
             <i className="fa fa-paper-plane"></i>
             Create

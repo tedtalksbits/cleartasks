@@ -57,7 +57,7 @@ const TodoList = () => {
             <IconButton onClick={() => setShowModal(false)} style={iconButtonPostion} >
                <i className="fa fa-times" aria-hidden="true"></i>
             </IconButton>
-            <PostForm />
+            <PostForm setShowForm={setShowModal} />
          </ControlledModal >
          <hr />
 

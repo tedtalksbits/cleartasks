@@ -35,8 +35,7 @@ const IconsContainer = styled.div`
 
 `
 const Icon = styled.p`
-   visibility: ${({ when }) => when ? 'visible' : 'hidden'};
-   opacity: ${({ when }) => when ? '1' : '0'};
+   
    transition: opacity .3s, visibility ease-in-out .3s;
    cursor: pointer;
     
@@ -60,6 +59,11 @@ const Icon = styled.p`
       :hover{
         transform: scale(1.2);
       }
+    }
+
+    @media screen and (min-width: 1400px) {
+      visibility: ${({ when }) => when ? 'visible' : 'hidden'};
+      opacity: ${({ when }) => when ? '1' : '0'};
     }
 
 `
