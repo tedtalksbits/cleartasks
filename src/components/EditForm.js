@@ -82,6 +82,7 @@ const EditForm = ({ id }) => {
             />
          </FormField>
          <div className="radios">
+            Status
             <label htmlFor="Todo" className='custom-radio'>
                <Highlight className='danger'>Todo</Highlight>
                <Input

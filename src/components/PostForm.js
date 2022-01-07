@@ -44,6 +44,7 @@ const PostForm = ({ setShowForm }) => {
             })
             resetForm()
             setUpdateUI();
+            setShowForm(false);
          } catch (error) {
             console.log(error);
          }
@@ -105,7 +106,7 @@ const PostForm = ({ setShowForm }) => {
          </FormField>
          <Button
             style={{ display: 'block', marginLeft: 'auto' }}
-            onClick={() => { postTodo(); setShowForm(false) }}
+            onClick={() => { postTodo(); }}
          >
             <i className="fa fa-paper-plane"></i>
             Create

@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { todoDelete, todoUpdate } from '../api/todo'
 import { useUIState } from '../context/UpdateUiContext'
 import { GridContainer, GridItem } from './Grid'
+import { Loading } from './Loader/Loading'
 import { Highlight } from './PageComponents'
 import Todo from './Todo'
 
 const RenderTable = ({ search, sort }) => {
    const URL = 'https://college-courses-api.herokuapp.com/upcoming_courses/'
    const [data, setData] = useState([])
+   const [isLoading, setIsLoading] = useState(true);
    const { updateUI, setUpdateUI } = useUIState()
-
    const fetchItems = async () => {
       try {
          const res = await fetch(URL, {
@@ -17,6 +18,7 @@ const RenderTable = ({ search, sort }) => {
          })
          const result = await res.json()
          setData(result)
+         setIsLoading(false);
 
       } catch (error) {
          console.log(error);
@@ -65,7 +67,6 @@ const RenderTable = ({ search, sort }) => {
       })
    }
 
-
    const updateStatusTodo = async (id, obj) => {
       await todoUpdate(`${URL}${id}`, obj);
       setUpdateUI()
@@ -75,7 +76,15 @@ const RenderTable = ({ search, sort }) => {
       await todoDelete(`${URL}${id}`)
       setUpdateUI()
    }
+   if (isLoading) {
+      return (
+         <div className="center-container" style={{ display: 'grid', placeItems: 'center' }}>
+            <Loading />
+         </div>
+      )
+   }
    return (
+
       <GridContainer>
          <GridItem className='todo-head'><Highlight className='danger'>To Do</Highlight></GridItem>
          <GridItem className='doing-head'><Highlight className='warning'>Doing</Highlight></GridItem>
