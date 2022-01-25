@@ -14,7 +14,7 @@ export function useThemeChanger() {
 export const ThemeChangeProvider = ({ children }) => {
    const dark = darkTheme;
    const light = lightTheme;
-   const [currTheme, setCurrTheme] = useLocalStorageState('theme', dark || darkTheme);
+   const [currTheme, setCurrTheme] = useLocalStorageState('theme', darkTheme);
 
    const handleThemeChange = () => {
       if (currTheme === dark) {
