@@ -57,7 +57,7 @@ const App = () => {
       <Main>
         <HashRouter hashType="slash">
           <Routes>
-            <Route exact path='/cleartasks' element={<Home />} />
+            <Route path='/cleartasks' element={<Home />} />
             <Route path='/cleartasks/tasks/:_id' element={<Tasks />} />
             <Route path='/cleartasks/edit/:id/:taskId' element={<Edit />} />
           </Routes>
