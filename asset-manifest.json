@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/taskify/static/css/main.dcaa3360.css",
-    "main.js": "/taskify/static/js/main.699e1e55.js",
-    "static/js/787.58b5f485.chunk.js": "/taskify/static/js/787.58b5f485.chunk.js",
-    "index.html": "/taskify/index.html",
-    "main.dcaa3360.css.map": "/taskify/static/css/main.dcaa3360.css.map",
-    "main.699e1e55.js.map": "/taskify/static/js/main.699e1e55.js.map",
-    "787.58b5f485.chunk.js.map": "/taskify/static/js/787.58b5f485.chunk.js.map"
+    "main.css": "/cleartasks/static/css/main.2c35e760.css",
+    "main.js": "/cleartasks/static/js/main.0ceda0d4.js",
+    "static/js/787.b3412b1e.chunk.js": "/cleartasks/static/js/787.b3412b1e.chunk.js",
+    "static/media/clearTasks.jpg": "/cleartasks/static/media/clearTasks.34f803c7eca332ab3036.jpg",
+    "index.html": "/cleartasks/index.html",
+    "main.2c35e760.css.map": "/cleartasks/static/css/main.2c35e760.css.map",
+    "main.0ceda0d4.js.map": "/cleartasks/static/js/main.0ceda0d4.js.map",
+    "787.b3412b1e.chunk.js.map": "/cleartasks/static/js/787.b3412b1e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dcaa3360.css",
-    "static/js/main.699e1e55.js"
+    "static/css/main.2c35e760.css",
+    "static/js/main.0ceda0d4.js"
   ]
 }
