@@ -64,9 +64,19 @@ In essence:
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+### Features:
+
+<p>1. Organization</p>
+<img src="/simple-todo/src/screenshots/ct-gif-custom.gif" alt="Logo" style='object-fit: cover;'>
+<hr>
+<p>2. Organization</p>
+<img src="/simple-todo/src/screenshots/ct-gif-organization.gif" alt="Logo" style='object-fit: cover;'>
+<hr>
+<p>3. Stages</p>
+<img src="/simple-todo/src/screenshots/ct-gif-stages.gif" alt="Logo" style='object-fit: cover;'>
+<hr>
 
 ### Built With🛠
-
 
 * [React.js](https://reactjs.org/)
 * [Styled Components](https://styled-components.com/) <-- all components were custom styled✨>
