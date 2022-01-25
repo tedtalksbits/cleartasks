@@ -83,11 +83,10 @@ const Icon = styled.span`
 
    &:hover ::after{
          content: '${props => props.text}';
-         color: white;
          font-size: .6rem;
          width: max-content;
          padding: .4rem;
-         background: ${props => props.theme.surface2};
+         background: ${props => props.theme.surface1};
          position: absolute;
          top: -2rem;
          left: -5em;

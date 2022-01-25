@@ -106,8 +106,8 @@ const Banner = ({ img, icon, imgEdit, emojieEdit }) => {
       <Container className='full-bleed'>
          <img src={img} alt="banner" />
          <span onClick={emojieEdit}>{icon || emojies[randomNum]}</span>
-         <div className="edit-img">
-            <i className="fa fa-plus" aria-hidden="true" onClick={imgEdit}></i>
+         <div className="edit-img" onClick={imgEdit}>
+            <i className="fa fa-plus" aria-hidden="true" ></i>
          </div>
       </Container>
    )

@@ -7,10 +7,12 @@ import { DataLoader } from '../components/DataLoader'
 import { Flex } from '../components/Flex'
 import { Logo } from '../components/Logo'
 import { Menu } from '../components/Menu'
+import { Navigation } from '../components/Navigation'
 import { Button, MainContainer, MainGrid } from '../components/PageComponents'
 import TaskForm from '../components/TaskForm'
 import { TasksRenderer } from '../components/TasksRenderer'
 import { usePageContext } from '../context/PageContext'
+import { useThemeChanger } from '../context/ThemeChanger'
 import { useUser } from '../context/UserContext'
 
 const mainContainerSize = {
@@ -28,9 +30,9 @@ const Home = () => {
    const userSetPageImg = (img) => {
       setPageData({ ...pageData, home: { ...pageData.home, img: img } })
    }
+   // banner
 
    const [showModal, setShowModal] = useState(false)
-   // console.log(user)
 
    let navigate = useNavigate()
    useEffect(() => {
@@ -41,6 +43,8 @@ const Home = () => {
 
    const { pageData, setPageData } = usePageContext()
 
+   // theme changer
+   const { handleThemeChange } = useThemeChanger()
    return user && (
       <MainGrid>
          <Banner
@@ -66,20 +70,7 @@ const Home = () => {
             </EmojiBox>
          </ControlledModal>
          <MainContainer style={mainContainerSize} >
-            <div className="paragraph">
-               <Flex>
-                  <div className="logo">
-                     <Logo />
-                  </div>
-                  <Menu >
-                     <Avatar src={user.photoURL || ''} />
-                     <p className='custom-text'>{user.displayName || 'no user'}</p>
-                     <small className='custom-text'>{user.email || 'no user'}</small>
-                     <hr />
-                     <Button onClick={() => { setUser(null); navigate('/cleartasks/sign-in') }} color='#472d35' style={{ margin: 0 }}>Log out</Button>
-                  </Menu>
-               </Flex>
-            </div>
+            <Navigation />
             <hr />
             <Button onClick={() => setShowModal(true)}><i className="fa fa-plus" aria-hidden="true"></i></Button>
             <ControlledModal className='modal' isVisible={showModal} onClose={() => setShowModal(false)}>

@@ -8,6 +8,8 @@ import { Signin } from './pages/Signin'
 import { Signup } from './pages/Signup'
 import { Tasks } from './pages/Tasks'
 import { NotFound } from './pages/NotFound'
+import useLocalStorageState from 'use-local-storage-state'
+import { useThemeChanger } from './context/ThemeChanger'
 
 
 const GlobalStyles = createGlobalStyle`
@@ -50,9 +52,9 @@ const GlobalStyles = createGlobalStyle`
 `
 const Main = styled.main``
 const App = () => {
-  const theme = darkTheme;
+  const { currTheme } = useThemeChanger()
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={currTheme}>
       <GlobalStyles />
       <Router>
         <Main>

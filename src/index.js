@@ -6,16 +6,19 @@ import reportWebVitals from './reportWebVitals';
 import { UIStateProvider } from './context/UpdateUiContext';
 import { UserProvider } from './context/UserContext';
 import { PageProvider } from './context/PageContext';
+import { ThemeChangeProvider } from './context/ThemeChanger';
 
 ReactDOM.render(
   <React.StrictMode>
-    <PageProvider>
-      <UserProvider>
-        <UIStateProvider>
-          <App />
-        </UIStateProvider>
-      </UserProvider>
-    </PageProvider>
+    <ThemeChangeProvider>
+      <PageProvider>
+        <UserProvider>
+          <UIStateProvider>
+            <App />
+          </UIStateProvider>
+        </UserProvider>
+      </PageProvider>
+    </ThemeChangeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
