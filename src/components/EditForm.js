@@ -8,11 +8,14 @@ const closeIconPosition = {
    right: '0rem',
    top: '-5.5rem'
 }
-const EditForm = ({ id }) => {
-   const URL = 'https://college-courses-api.herokuapp.com/upcoming_courses/'
-   const [todo, setTodo] = useState([])
+const EditForm = ({ itemId, taskId, task }) => {
+
+   const URL = `${process.env.REACT_APP_MDB}/item/${taskId}/${itemId}`
+   const editURL = `${process.env.REACT_APP_MDB}/list/${taskId}`
+   const [todo, setTodo] = useState({})
+
    const fetchTodo = async () => {
-      const data = await fetchById(`${URL}${id}`)
+      const data = await fetchById(URL)
       setTodo(data)
       // console.log(data);
    }
@@ -22,16 +25,28 @@ const EditForm = ({ id }) => {
 
    const navigate = useNavigate()
 
-   function goHome() {
-      navigate('/taskify')
+   function goBack() {
+      navigate(`/cleartasks/tasks/${taskId}`)
    }
    const saveTodo = async () => {
-      await todoUpdate(`${URL}${id}`, todo)
-      goHome()
+      if (task) {
+         const updatedItems = task.items.map(e => {
+            if (e._id === itemId) {
+               return todo
+            }
+            else
+               return e
+         })
+         const updatedTask = { ...task, items: updatedItems }
+         // console.log(updatedItems);
+         const res = await todoUpdate(editURL, updatedTask)
+         goBack()
+      }
    }
+
    return (
       <Form style={{ position: 'relative' }} onSubmit={e => e.preventDefault()}>
-         <IconButton onClick={goHome} style={closeIconPosition}>
+         <IconButton onClick={goBack} style={closeIconPosition}>
             <i className="fa fa-times" aria-hidden="true"></i>
          </IconButton>
          <FormField
@@ -43,8 +58,8 @@ const EditForm = ({ id }) => {
                id='Title'
                className='field-input'
                placeholder='Empty'
-               value={todo.title}
-               onChange={(e) => setTodo({ ...todo, title: e.target.value })}
+               value={todo.itemTitle}
+               onChange={(e) => setTodo({ ...todo, itemTitle: e.target.value })}
                required
                autoFocus
 
@@ -60,8 +75,8 @@ const EditForm = ({ id }) => {
                id='Image'
                className='field-input'
                placeholder='Empty'
-               value={todo.img}
-               onChange={(e) => setTodo({ ...todo, img: e.target.value })}
+               value={todo.itemImage}
+               onChange={(e) => setTodo({ ...todo, itemImage: e.target.value })}
 
             />
          </FormField>
@@ -76,44 +91,43 @@ const EditForm = ({ id }) => {
                rows='10'
                className='field-input'
                placeholder='Empty'
-               value={todo.text}
-               onChange={(e) => setTodo({ ...todo, text: e.target.value })}
+               value={todo.itemText}
+               onChange={(e) => setTodo({ ...todo, itemText: e.target.value })}
 
             />
          </FormField>
          <div className="radios">
-            Status
+            <i className='fa fa-spinner' style={{ marginRight: '.4rem' }}></i>
+            <span >Stage</span>
+            <hr />
             <label htmlFor="Todo" className='custom-radio'>
-               <Highlight className='danger'>Todo</Highlight>
+               <Highlight className={task.stageOne.color}>{task.stageOne.title}</Highlight>
                <Input
                   type='radio'
                   name='status'
                   id='Todo'
-                  checked={!todo.done && !todo.doing}
-                  value={!todo.done && !todo.doing ? true : false}
-                  onChange={() => setTodo({ ...todo, done: false, doing: false })}
+                  checked={todo.itemStage === 1}
+                  onChange={() => setTodo({ ...todo, itemStage: 1 })}
                />
             </label>
             <label htmlFor="Doing" className='custom-radio'>
-               <Highlight className='warning'>Doing</Highlight>
+               <Highlight className={task.stageTwo.color}>{task.stageTwo.title}</Highlight>
                <Input
                   type='radio'
                   name='status'
                   id='Doing'
-                  checked={todo.doing}
-                  value={todo.doing}
-                  onChange={() => setTodo({ ...todo, done: false, doing: true })}
+                  checked={todo.itemStage === 2}
+                  onChange={() => setTodo({ ...todo, itemStage: 2 })}
                />
             </label>
             <label htmlFor="Done" className='custom-radio'>
-               <Highlight className='success'>Done</Highlight>
+               <Highlight className={task.stageThree.color}>{task.stageThree.title}</Highlight>
                <Input
                   type='radio'
                   name='status'
                   id='Done'
-                  checked={todo.done}
-                  value={todo.done}
-                  onChange={() => setTodo({ ...todo, done: true, doing: false })}
+                  checked={todo.itemStage === 3}
+                  onChange={() => setTodo({ ...todo, itemStage: 3 })}
                />
             </label>
          </div>

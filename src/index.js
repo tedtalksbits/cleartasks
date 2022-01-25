@@ -4,13 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { UIStateProvider } from './context/UpdateUiContext';
+import { UserProvider } from './context/UserContext';
+import { PageProvider } from './context/PageContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <UIStateProvider>
-
-      <App />
-    </UIStateProvider>
+    <PageProvider>
+      <UserProvider>
+        <UIStateProvider>
+          <App />
+        </UIStateProvider>
+      </UserProvider>
+    </PageProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

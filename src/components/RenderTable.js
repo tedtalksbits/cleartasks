@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { todoDelete, todoUpdate } from '../api/todo'
 import { useUIState } from '../context/UpdateUiContext'
+import { EditableText } from './EditableText'
 import { GridContainer, GridItem } from './Grid'
-import { Loading } from './Loader/Loading'
-import { Highlight } from './PageComponents'
+import { MyLoader } from './MyLoader'
 import Todo from './Todo'
 
-const RenderTable = ({ search, sort }) => {
-   const URL = 'https://college-courses-api.herokuapp.com/upcoming_courses/'
-   const [data, setData] = useState([])
+const RenderTable = ({ search, taskId, userId }) => {
+
+   const URL = `${process.env.REACT_APP_MDB}/list/${userId}/${taskId}`
+   const editURL = `${process.env.REACT_APP_MDB}/list/${taskId}`
+   const [data, setData] = useState(null)
    const [isLoading, setIsLoading] = useState(true);
    const { updateUI, setUpdateUI } = useUIState()
+
+
+
    const fetchItems = async () => {
       try {
          const res = await fetch(URL, {
             method: 'GET'
          })
-         const result = await res.json()
-         setData(result)
+         const items = await res.json()
+         // console.log(items)
+         setData(items)
          setIsLoading(false);
 
       } catch (error) {
@@ -25,132 +31,112 @@ const RenderTable = ({ search, sort }) => {
       }
    }
    useEffect(() => {
-      fetchItems()
+      fetchItems();
    }, [updateUI])
 
 
    /************************** functionality **************************/
-   const filteredData = data.filter(item => {
+
+   const filteredData = data?.items.filter(item => {
       return (
-         item.title.toLowerCase().includes(search.toLocaleLowerCase())
+         item.itemTitle.toLowerCase().includes(search.toLocaleLowerCase())
       )
    })
 
-   if (!sort) {
-
-      filteredData.sort((a, b) => {
-         let fa = a.created_at.toLowerCase(),
-            fb = b.created_at.toLowerCase();
-
-         if (fa < fb) {
-            return -1;
-         }
-         if (fa > fb) {
-            return 1;
-         }
-         return 0;
-      })
-   }
-
-   if (sort) {
-      filteredData.sort((a, b) => {
-         let fa = a.created_at.toLowerCase(),
-            fb = b.created_at.toLowerCase();
-
-         if (fa > fb) {
-            return -1;
-         }
-         if (fa < fb) {
-            return 1;
-         }
-         return 0;
-      })
-   }
-
-   const updateStatusTodo = async (id, obj) => {
-      await todoUpdate(`${URL}${id}`, obj);
+   const updateStatusTodo = async (obj) => {
+      await todoUpdate(editURL, obj);
       setUpdateUI()
+
    }
 
    const handleDelete = async (id) => {
-      await todoDelete(`${URL}${id}`)
+      await todoDelete(`${process.env.REACT_APP_MDB}/item/${taskId}/${id}`)
       setUpdateUI()
    }
    if (isLoading) {
       return (
          <div className="center-container" style={{ display: 'grid', placeItems: 'center' }}>
-            <Loading />
+            <MyLoader />
          </div>
       )
    }
    return (
 
       <GridContainer>
-         <GridItem className='todo-head'><Highlight className='danger'>To Do</Highlight></GridItem>
-         <GridItem className='doing-head'><Highlight className='warning'>Doing</Highlight></GridItem>
-         <GridItem className='done-head'><Highlight className='success'>Done</Highlight></GridItem>
-
-         <GridItem className='todo-item'>
-            {filteredData.map((todo) => {
-               if (todo.doing === false && todo.done === false) {
-                  return (
-                     <Todo
-                        key={todo.id}
-                        title={todo.title}
-                        text={todo.text}
-                        img={todo.img}
-                        todoId={todo.id}
-                        date={todo.created_at}
-                        todoDelete={() => handleDelete(todo.id)}
-                        todoDone={() => { updateStatusTodo(todo.id, { ...todo, done: true, doing: false }) }}
-                        todoDoing={() => { updateStatusTodo(todo.id, { ...todo, doing: true, done: false }) }}
-                     />
-                  )
-               }
-               else return null
-            })}
+         {/* column headers */}
+         <GridItem className='todo-head'>
+            <EditableText title={data.stageOne.title} color={data.stageOne.color} taskId={taskId} stage={1} />
          </GridItem>
-         <GridItem className='doing-item'>
-            {filteredData.map((todo) => {
-               if (todo.doing) {
-                  return (
-                     <Todo
-                        key={todo.id}
-                        title={todo.title}
-                        text={todo.text}
-                        img={todo.img}
-                        todoId={todo.id}
-                        date={todo.created_at}
-                        todoDelete={() => handleDelete(todo.id)}
-                        todoDone={() => { updateStatusTodo(todo.id, { ...todo, done: true, doing: false }) }}
-                        todoDoing={() => { updateStatusTodo(todo.id, { ...todo, doing: true, done: false }) }}
-                     />
-                  )
-               }
-               else return null
-            })}
+         <GridItem className='doing-head'>
+            <EditableText title={data.stageTwo.title} color={data.stageTwo.color} taskId={taskId} stage={2} />
+         </GridItem>
+         <GridItem className='done-head'>
+            <EditableText title={data.stageThree.title} color={data.stageThree.color} taskId={taskId} stage={3} />
+         </GridItem>
+
+         <GridItem className='todo-item' >
+            {filteredData.map(e => e.itemStage === 1 && (
+               <Todo
+                  key={e._id}
+                  title={e.itemTitle}
+                  text={e.itemText}
+                  img={e.itemImage}
+                  todoId={e._id}
+                  taskId={taskId}
+                  date={e.createdAt}
+                  stageTwoColor={data.stageTwo.color}
+                  stageThreeColor={data.stageThree.color}
+                  stageOneColor={data.stageOne.color}
+                  todoDelete={() => handleDelete(e._id)}
+                  todoRestart={() => { updateStatusTodo({ ...data, ...e.itemStage = 1 }) }}
+                  todoDoing={() => { updateStatusTodo({ ...data, ...e.itemStage = 2 }) }}
+                  todoDone={() => { updateStatusTodo({ ...data, ...e.itemStage = 3 }) }}
+               />
+            ))}
+         </GridItem>
+         <GridItem className='doing-item' >
+            {filteredData.map(e => e.itemStage === 2 && (
+               <>
+                  <Todo
+                     key={e._id}
+                     title={e.itemTitle}
+                     text={e.itemText}
+                     img={e.itemImage}
+                     todoId={e._id}
+                     taskId={taskId}
+                     date={e.createdAt}
+                     stageTwoColor={data.stageTwo.color}
+                     stageThreeColor={data.stageThree.color}
+                     stageOneColor={data.stageOne.color}
+                     todoDelete={() => handleDelete(e._id)}
+                     todoRestart={() => { updateStatusTodo({ ...data, ...e.itemStage = 1 }) }}
+                     todoDoing={() => { updateStatusTodo({ ...data, ...e.itemStage = 2 }) }}
+                     todoDone={() => { updateStatusTodo({ ...data, ...e.itemStage = 3 }) }}
+                  />
+               </>
+            ))}
          </GridItem>
          <GridItem className='done-item' >
-            {filteredData.map((todo) => {
-               if (todo.done) {
-                  return (
-                     <Todo
-                        key={todo.id}
-                        title={todo.title}
-                        text={todo.text}
-                        img={todo.img}
-                        todoId={todo.id}
-                        date={todo.created_at}
-                        todoDelete={() => handleDelete(todo.id)}
-                        todoDone={() => { updateStatusTodo(todo.id, { ...todo, done: true, doing: false }) }}
-                        todoDoing={() => { updateStatusTodo(todo.id, { ...todo, doing: true, done: false }) }}
-                     />
-                  )
-               }
-               else return null
-            })}
+            {filteredData.map(e => e.itemStage === 3 && (
+               <Todo
+                  key={e._id}
+                  title={e.itemTitle}
+                  text={e.itemText}
+                  img={e.itemImage}
+                  todoId={e._id}
+                  taskId={taskId}
+                  date={e.createdAt}
+                  stageTwoColor={data.stageTwo.color}
+                  stageThreeColor={data.stageThree.color}
+                  stageOneColor={data.stageOne.color}
+                  todoDelete={() => handleDelete(e._id)}
+                  todoRestart={() => { updateStatusTodo({ ...data, ...e.itemStage = 1 }) }}
+                  todoDoing={() => { updateStatusTodo({ ...data, ...e.itemStage = 2 }) }}
+                  todoDone={() => { updateStatusTodo({ ...data, ...e.itemStage = 3 }) }}
+               />
+            ))}
          </GridItem>
-      </GridContainer>
+      </GridContainer >
    )
 }
 

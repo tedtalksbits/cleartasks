@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 const Background = styled.div`
-   background: #212121aa;
+   background: #000000c4;
    height: 100%;
    width: 100%;
    overflow-y: hidden;

@@ -1,17 +1,20 @@
 {
-  "homepage": "http://tedtalksbits.github.io/taskify",
-  "name": "taskify-app",
+  "homepage": "http://tedtalksbits.github.io/cleartasks",
+  "name": "cleartasks",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:9999",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "firebase": "^9.6.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "styled-components": "^5.3.3",
+    "use-local-storage-state": "^13.0.0",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.2"
   },

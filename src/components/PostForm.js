@@ -1,46 +1,36 @@
 import React, { useState } from 'react'
 import FormField, { Form, Input, TextArea } from './Form'
 import { Button } from './PageComponents'
-import { v4 as uuidv4 } from 'uuid';
 import { useUIState } from '../context/UpdateUiContext';
-const PostForm = ({ setShowForm }) => {
+const PostForm = ({ setShowForm, url }) => {
 
-   const URL = 'https://college-courses-api.herokuapp.com/upcoming_courses/'
+
    const { setUpdateUI } = useUIState()
-   const [newTodo, setNewTodo] = useState({
-      title: "",
-      text: "",
-      created_at: new Date(),
-      id: uuidv4(),
-      done: false,
-      doing: false,
-      completed_at: "",
-      img: ''
+   const [newItem, setNewItem] = useState({
+      itemText: "",
+      itemTitle: "",
+      itemImage: "",
+
    })
 
    const resetForm = () => {
-      setNewTodo({
-         title: "",
-         text: "",
-         created_at: '',
-         id: '',
-         done: '',
-         doing: '',
-         completed_at: "",
-         img: ''
+      setNewItem({
+         itemText: "",
+         itemTitle: "",
+         itemImage: "",
       })
    }
 
    const postTodo = async () => {
 
-      if (newTodo.title) {
+      if (newItem.itemTitle) {
          try {
-            await fetch(URL, {
+            await fetch(url, {
                method: 'POST',
                headers: {
                   "Content-Type": "application/json"
                },
-               body: JSON.stringify(newTodo)
+               body: JSON.stringify(newItem)
             })
             resetForm()
             setUpdateUI();
@@ -67,8 +57,8 @@ const PostForm = ({ setShowForm }) => {
                id='Title'
                className='field-input'
                placeholder='Empty'
-               value={newTodo.title}
-               onChange={(e) => setNewTodo({ ...newTodo, title: e.target.value })}
+               value={newItem.itemTitle}
+               onChange={(e) => setNewItem({ ...newItem, itemTitle: e.target.value })}
                required
                autoFocus
 
@@ -84,8 +74,8 @@ const PostForm = ({ setShowForm }) => {
                id='Image'
                className='field-input'
                placeholder='Empty'
-               value={newTodo.img}
-               onChange={(e) => setNewTodo({ ...newTodo, img: e.target.value })}
+               value={newItem.itemImage}
+               onChange={(e) => setNewItem({ ...newItem, itemImage: e.target.value })}
 
             />
          </FormField>
@@ -100,8 +90,8 @@ const PostForm = ({ setShowForm }) => {
                rows='3'
                className='field-input'
                placeholder='Empty'
-               value={newTodo.text}
-               onChange={(e) => setNewTodo({ ...newTodo, text: e.target.value })}
+               value={newItem.itemText}
+               onChange={(e) => setNewItem({ ...newItem, itemText: e.target.value })}
             />
          </FormField>
          <Button

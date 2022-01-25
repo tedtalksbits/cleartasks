@@ -29,11 +29,12 @@ const inputStyles = css`
    }
 `
 export const Form = styled.form`
-   /* margin: 2rem 0; */
    border-radius: 5px;
    padding: 1rem 1.5rem;
    background: ${props => props.theme.surface2};
-
+   transition: all ease .25s; 
+   animation: zoom ease .4s forwards;
+   animation-fill-mode: both;
    :focus-within{
       box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
    }
@@ -41,7 +42,6 @@ export const Form = styled.form`
       padding: 1rem 1rem 0;
       color: ${props => props.theme.text3};
    }
-
    
 `
 const FFContainer = styled.fieldset`
@@ -95,6 +95,10 @@ export const TextArea = styled.textarea`
    width: 100%;
    border: none;
    ${inputStyles};
+
+   @media screen and (max-width: 640px) {
+      height: 10em;
+   }
 `
 
 
@@ -108,7 +112,16 @@ export const Select = styled.select`
    border-radius: 5px;
    font-size: 1.2rem;
 `
-
+export const HiddenFileInput = styled.input`
+   opacity: 0;
+   top: 0;
+   width: 100%;
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   cursor: pointer;
+`
 const FormField = ({ icon, title, children }) => {
    return (
       <FFContainer className="form__field">

@@ -7,7 +7,8 @@ export const GridContainer = styled.div`
    gap: 15px 35px; 
    grid-template-areas: 
       "todo-head doing-head done-head"
-      "todo-item doing-item done-item"; 
+      "todo-item doing-item done-item"
+      ; 
 
    .todo-head { grid-area: todo-head; }
    .doing-head { grid-area: doing-head; }

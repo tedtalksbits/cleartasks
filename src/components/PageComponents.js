@@ -1,10 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import React from 'react'
+import { bannerHeight } from "./Banner";
 export const MainGrid = styled.main`
    display: grid;
    grid-template-columns: 1fr min(150ch, 100%) 1fr;
    overflow-x: hidden;
-   
+ 
    & > *{
       grid-column: 2;
    }
@@ -12,6 +13,8 @@ export const MainGrid = styled.main`
       width:100%;
       grid-column: 1 / 4;
    }
+
+  
 
    /* center elements */
    min-block-size: ${({ centerElements }) => centerElements ? 'calc(100vh - 70px)' : ''} ;
@@ -22,12 +25,24 @@ export const MainContainer = styled.section`
    padding: 1rem;
    grid-column: 2/3;
    width: 100%;
+   min-block-size: calc(100vh - ${bannerHeight}rem);
+   animation: fadeIn ease-in-out .25s forwards;
+   animation-fill-mode: both;
+
+   @keyframes fadeIn{
+      0%{
+         opacity: 0;
+      }
+      100%{
+         opacity: 1;
+      }
+   }
 `
 
 export const Button = styled.button`
    padding: .675rem 2rem;
    font-size: 1rem;
-   background: ${({ theme }) => theme.brand};
+   background: ${props => props.color || props.theme.brand};
    color: ${({ theme }) => theme.text1};
    text-transform: capitalize;
    border-radius: 6px;
@@ -108,7 +123,7 @@ export const Figure = styled.figure`
    page-break-inside: avoid;
 `
 
-export const Highlight = styled.span`
+export const Highlight = styled.div`
    background: rgba(255, 196, 87, 0.192);
    border: 1px solid rgba(255, 196, 87, 0.192);
    display: inline-block;
@@ -131,7 +146,22 @@ export const Highlight = styled.span`
    &.danger{
       border: ${props => props.theme.danger} 1px solid; 
       background: ${props => props.theme.danger};
-
+   }
+   &.blue{
+      border: ${props => props.theme.blue} 1px solid; 
+      background: ${props => props.theme.blue};
+   }
+   &.pink{
+      border: ${props => props.theme.pink} 1px solid; 
+      background: ${props => props.theme.pink};
+   }
+   &.purple{
+      border: ${props => props.theme.purple} 1px solid; 
+      background: ${props => props.theme.purple};
+   }
+   &.mint{
+      border: ${props => props.theme.mint} 1px solid; 
+      background: ${props => props.theme.mint};
    }
 
 `
@@ -162,7 +192,27 @@ const Container = styled.div`
    }
 
 `
+export const CardStyles = css`
+   cursor: pointer;
+   display: inline-block;
+   width: 100%;
+   padding: .5rem .8rem;
+   border-radius: 5px;
+   margin: .4rem 0;
+   background: ${props => props.theme.surface2};
 
+`
+export const CardGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1rem;
+  
+  img {
+   width: 100%;
+   height: 200px;
+   object-fit:cover;
+  }
+`
 
 
 const TwoColumnContainer = ({ children }) => {

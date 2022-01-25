@@ -103,3 +103,14 @@ div.paragraph{
   0% {opacity: 0};
   100% {opacity: 1};
 }
+
+@keyframes zoom {
+  0%{
+    transform: translate3d(100px,0,0) scale(.6);
+    opacity: 0;
+  }
+  100%{
+    transform: translateZ(0) scale(1);
+    opacity: 1;
+  }
+}
