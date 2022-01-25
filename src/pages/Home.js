@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Avatar } from '../components/Avatar'
 import Banner, { bannerHeight, bannerImgs, EmojiBox, emojies } from '../components/Banner'
 import { ControlledModal } from '../components/ControlledModal'
 import { DataLoader } from '../components/DataLoader'
-import { Flex } from '../components/Flex'
-import { Logo } from '../components/Logo'
-import { Menu } from '../components/Menu'
 import { Navigation } from '../components/Navigation'
 import { Button, MainContainer, MainGrid } from '../components/PageComponents'
 import TaskForm from '../components/TaskForm'
@@ -19,7 +15,7 @@ const mainContainerSize = {
    minBlockSize: `calc(100vh - ${bannerHeight})`
 }
 const Home = () => {
-   const { user, setUser } = useUser()
+   const { user } = useUser()
    // banner interaction
    const [openEmojies, setOpenEmojies] = useState(false)
    const [openImages, setOpenImages] = useState(false)

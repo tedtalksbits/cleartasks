@@ -1,7 +1,6 @@
 import React from 'react'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { darkTheme, lightTheme } from './theme'
 import Home from './pages/Home'
 import Edit from './pages/Edit'
 import { Signin } from './pages/Signin'
