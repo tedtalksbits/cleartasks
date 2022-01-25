@@ -10,6 +10,7 @@ import { TasksRenderer } from '../components/TasksRenderer'
 import { usePageContext } from '../context/PageContext'
 import { useThemeChanger } from '../context/ThemeChanger'
 import { useUser } from '../context/UserContext'
+import { Signin } from './Signin'
 
 const mainContainerSize = {
    minBlockSize: `calc(100vh - ${bannerHeight})`
@@ -31,16 +32,18 @@ const Home = () => {
    const [showModal, setShowModal] = useState(false)
 
    let navigate = useNavigate()
-   useEffect(() => {
-      if (!user) {
-         navigate('/cleartasks/sign-in')
-      }
-   }, [user])
+   // useEffect(() => {
+   //    if (!user) {
+   //       navigate('/cleartasks/sign-in')
+   //    }
+   // }, [user])
 
    const { pageData, setPageData } = usePageContext()
-
-   // theme changer
-   const { handleThemeChange } = useThemeChanger()
+   if (!user) {
+      return (
+         <Signin />
+      )
+   }
    return user && (
       <MainGrid>
          <Banner

@@ -60,7 +60,7 @@ const App = () => {
             <Route exact path='/cleartasks' element={<Home />} />
             <Route path='/cleartasks/tasks/:_id' element={<Tasks />} />
             <Route path='/cleartasks/edit/:id/:taskId' element={<Edit />} />
-            <Route exact path='/cleartasks/sign-in' element={<Signin />} />
+            <Route path='/cleartasks/sign-in' element={<Signin />} />
             <Route path='/cleartasks/sign-up' element={<Signup />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
