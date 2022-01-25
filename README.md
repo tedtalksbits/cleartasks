@@ -4,13 +4,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/tedtalksbits/taskify/blob/main/src/screenshots/taskify-2.gif">
-    <img src="/simple-todo/src/screenshots/clearTasks.jpg" alt="Logo" width="280" height="280" style='object-fit: cover;'>
+    <img src="src/screenshots/clearTasks.jpg" alt="Logo" width="280" height="280" style='object-fit: cover;'>
   </a>
 
   <h3 align="center">ClearTasks: An app inspired by Notion</h3>
 
   <p align="center">
-    ClearTasks &copy; is a task manager that helps you stay productive and organized.
+    ClearTasks &copy; is a task manager that helps you stay productive and organized by separating your tasks in groups and catergories.
     <br />
     <br />
     <br />
@@ -51,13 +51,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project🎙
 
-<img src="/simple-todo/src/screenshots/ct-gif.gif" alt="Logo" style='object-fit: cover;'>
+<img src="src/screenshots/ct-gif.gif" alt="Logo" style='object-fit: cover;'>
+<hr>
+How to use:
 
-As a right of passage, a couple months ago while learning React I made a simple todo app. After getting familiar with more advanced topics I have decided to revisit this important milestone in my React journey and recreate the app into something more useful and way better looking. ✨ 
-
-In essence:
-* This app signifies the progress I have made through the months since I first pushed this repo
-* Initially this app was as simple as a text field and a couple of buttons. Now its a beautifully designed app many of the functionalities of a final product (relatively speaking ofcourse)
+- Sign in with google
+- create a new group
+- add as many items to the group as you want
 
 
 
@@ -66,14 +66,19 @@ In essence:
 
 ### Features:
 
-<p>1. Organization</p>
-<img src="/simple-todo/src/screenshots/ct-gif-custom.gif" alt="Logo" style='object-fit: cover;'>
+<b>1. Customization </b>
+<img src="src/screenshots/ct-gif-custom.gif" alt="Logo" style='object-fit: cover;'>
+<p>You can customize each page to you liking. Choose image and emojie that best fit the tasks on the page</p>
 <hr>
-<p>2. Organization</p>
-<img src="/simple-todo/src/screenshots/ct-gif-organization.gif" alt="Logo" style='object-fit: cover;'>
+
+<b>2. Organization</b>
+<img src="src/screenshots/ct-gif-organization.gif" alt="Logo" style='object-fit: cover;'>
+<p>Organize each tasks by grouping similar items</p>
 <hr>
-<p>3. Stages</p>
-<img src="/simple-todo/src/screenshots/ct-gif-stages.gif" alt="Logo" style='object-fit: cover;'>
+
+<b>3. Stages</b>
+<img src="src/screenshots/ct-gif-stages.gif" alt="Logo" style='object-fit: cover;'>
+<p>Stage items in three different categories. Categories can can be changed and renamed by the user </p>
 <hr>
 
 ### Built With🛠
@@ -111,7 +116,7 @@ _To run this app locally_
 1. Download or clone this repo
 
    ```sh
-   git clone https://github.com/tedtalks_bits/todo-app.git
+   git clone https://github.com/tedtalks_bits/cleartasks.git
    ```
 3. Install NPM packages
    ```sh
