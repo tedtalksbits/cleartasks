@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, HashRouter } from 'react-router-dom'
 import Home from './pages/Home'
 import Edit from './pages/Edit'
 import { Signin } from './pages/Signin'
@@ -54,18 +54,16 @@ const App = () => {
   return (
     <ThemeProvider theme={currTheme}>
       <GlobalStyles />
-      <Router >
+
+      <HashRouter hashType='hashbang' >
         <Main>
           <Routes>
             <Route exact path='/cleartasks' element={<Home />} />
             <Route path='/cleartasks/tasks/:_id' element={<Tasks />} />
             <Route path='/cleartasks/edit/:id/:taskId' element={<Edit />} />
-            {/* <Route path='/cleartasks/sign-in' element={<Signin />} />
-            <Route path='/cleartasks/sign-up' element={<Signup />} />
-            <Route path='*' element={<NotFound />} /> */}
           </Routes>
         </Main>
-      </Router>
+      </HashRouter>
     </ThemeProvider>
   )
 }
