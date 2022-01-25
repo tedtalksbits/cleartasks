@@ -7,7 +7,6 @@ import { Signin } from './pages/Signin'
 import { Signup } from './pages/Signup'
 import { Tasks } from './pages/Tasks'
 import { NotFound } from './pages/NotFound'
-import useLocalStorageState from 'use-local-storage-state'
 import { useThemeChanger } from './context/ThemeChanger'
 
 
@@ -55,13 +54,13 @@ const App = () => {
   return (
     <ThemeProvider theme={currTheme}>
       <GlobalStyles />
-      <Router>
+      <Router >
         <Main>
           <Routes>
             <Route exact path='/cleartasks' element={<Home />} />
             <Route path='/cleartasks/tasks/:_id' element={<Tasks />} />
             <Route path='/cleartasks/edit/:id/:taskId' element={<Edit />} />
-            <Route path='/cleartasks/sign-in' element={<Signin />} />
+            <Route exact path='/cleartasks/sign-in' element={<Signin />} />
             <Route path='/cleartasks/sign-up' element={<Signup />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
