@@ -29,7 +29,7 @@ export const Navigation = () => {
 
    useEffect(() => {
       if (!user) {
-         navigate('/cleartasks/sign-in')
+         navigate('/cleartasks')
       }
    }, [user, navigate])
 
@@ -53,7 +53,7 @@ export const Navigation = () => {
                         </div>
                      </Flex>
                      <hr />
-                     <Button onClick={() => { setUser(null); navigate('/cleartasks/sign-in') }} style={{ margin: 0 }}>Log out</Button>
+                     <Button onClick={() => { setUser(null); navigate('/cleartasks') }} style={{ margin: 0 }}>Log out</Button>
                   </Menu>
                </div>
             </Flex>
