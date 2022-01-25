@@ -54,16 +54,15 @@ const App = () => {
   return (
     <ThemeProvider theme={currTheme}>
       <GlobalStyles />
-
-      <HashRouter hashType='hashbang' >
-        <Main>
+      <Main>
+        <HashRouter hashType="slash">
           <Routes>
             <Route exact path='/cleartasks' element={<Home />} />
             <Route path='/cleartasks/tasks/:_id' element={<Tasks />} />
             <Route path='/cleartasks/edit/:id/:taskId' element={<Edit />} />
           </Routes>
-        </Main>
-      </HashRouter>
+        </HashRouter>
+      </Main>
     </ThemeProvider>
   )
 }
