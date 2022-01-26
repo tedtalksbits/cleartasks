@@ -14,7 +14,7 @@
     <br />
     <br />
     <br />
-    <a href="https://tedtalksbits.github.io/cleartasks/">View Demo</a>
+    <a href="https://tedtalksbits.github.io/cleartasks/#/cleartasks">View Demo</a>
   </p>
 </div>
 
