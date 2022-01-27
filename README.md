@@ -50,7 +50,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project🎙
-
+<h3>A Notion inspired task manager </h3>
 <img src="src/screenshots/ct-gif.gif" alt="Logo" style='object-fit: cover;'>
 <hr>
 How to use:
@@ -68,7 +68,7 @@ How to use:
 
 <b>1. Customization </b>
 <img src="src/screenshots/ct-gif-custom.gif" alt="Logo" style='object-fit: cover;'>
-<p>You can customize each page to you liking. Choose image and emojie that best fit the tasks on the page</p>
+<p>You can customize each page to your liking. Choose image and emojie that best fit the tasks on the page</p>
 <hr>
 
 <b>2. Organization</b>
