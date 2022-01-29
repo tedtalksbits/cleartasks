@@ -10,7 +10,7 @@
   <h3 align="center">ClearTasks: An app inspired by Notion</h3>
 
   <p align="center">
-    ClearTasks &copy; is a task manager that helps you stay productive and organized by separating your tasks in groups and catergories.
+    ClearTasks &copy; is a task manager that helps you stay productive and organized by separating your tasks in groups and categories.
     <br />
     <br />
     <br />
