@@ -1,13 +1,10 @@
 import React from 'react'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
-import { BrowserRouter as Router, Routes, Route, HashRouter } from 'react-router-dom'
 import Home from './pages/Home'
 import Edit from './pages/Edit'
-import { Signin } from './pages/Signin'
-import { Signup } from './pages/Signup'
 import { Tasks } from './pages/Tasks'
-import { NotFound } from './pages/NotFound'
 import { useThemeChanger } from './context/ThemeChanger'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 
 
 const GlobalStyles = createGlobalStyle`
@@ -55,7 +52,7 @@ const App = () => {
     <ThemeProvider theme={currTheme}>
       <GlobalStyles />
       <Main>
-        <HashRouter hashType="slash">
+        <HashRouter hashaType='slash'>
           <Routes>
             <Route path='/cleartasks' element={<Home />} />
             <Route path='/cleartasks/tasks/:_id' element={<Tasks />} />
