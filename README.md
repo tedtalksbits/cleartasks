@@ -3,7 +3,7 @@
   ClearTasks © is a task manager that helps you stay productive and organized by
   separating your tasks into groups and categories.
 </p>
-<img src="src/screenshots/ClearTasks.jpg" />
+<img src="./src/screenshots/clearTasks.jpg" />
 <p><br /></p>
 <p><br /></p>
 <p>
@@ -17,6 +17,7 @@
 <p>Table of Contents</p>
 <h2>About The Project🎙</h2>
 <h3>A Notion inspired task manager</h3>
+<img src="./src/screenshots/ct-gif-custom.gif" />
 <p><br /></p>
 <p>How to use:</p>
 <ul data-type="bullet">
@@ -45,6 +46,7 @@
   Stage items in three different categories. Categories can be changed and
   renamed by the user
 </p>
+<img src="./src/screenshots/ct-gif-organization.gif" />
 <h3>Built With🛠</h3>
 <ul data-type="bullet">
   <li>
@@ -64,7 +66,7 @@
   <li>
     <a
       class="editor-rtfLink"
-      href="https://www.npmjs.com/package/json-server"
+      href="https://www.mongodb.com"
       target="_blank"
       >MongoDB</a
     >
@@ -100,6 +102,15 @@
     <a
       class="editor-rtfLink"
       href="https://www.npmjs.com/package/react-router-dom/v/6.0.0-beta.0"
+      target="_blank"
+      >learn more</a
+    >
+  </li>
+  <li>
+     firebase: "^9.6.3",
+    <a
+      class="editor-rtfLink"
+      href="https://firebase.google.com"
       target="_blank"
       >learn more</a
     >
