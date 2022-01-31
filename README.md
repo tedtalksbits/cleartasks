@@ -3,6 +3,7 @@
   ClearTasks © is a task manager that helps you stay productive and organized by
   separating your tasks into groups and categories.
 </p>
+<img src="src/screenshots/ClearTasks.jpg" />
 <p><br /></p>
 <p><br /></p>
 <p>
@@ -10,7 +11,7 @@
     class="editor-rtfLink"
     href="https://tedtalksbits.github.io/cleartasks/#/cleartasks"
     target="_blank"
-    >View Demo</a
+    >Live Site</a
   >
 </p>
 <p>Table of Contents</p>
@@ -127,6 +128,7 @@
   <li>npm install</li>
   <li>Run the app locally config.js</li>
   <li>npm start</li>
+  <li>run this app @ http://localhost:3000/cleartasks/#/cleartasks</li>
 </ol>
 <p>
   (<a
@@ -213,3 +215,7 @@
   >)
 </p>
 <p><br /></p>
+
+## Issues log
+
+-  App won't run @ http://localhost:3000/cleartasks : instead, run this app @ http://localhost:3000/cleartasks/#/cleartasks (working to resolve react router issue)
