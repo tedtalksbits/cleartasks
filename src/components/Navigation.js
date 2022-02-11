@@ -24,6 +24,8 @@ const ThemeIcon = styled.div`
 `;
 const TaskName = styled.h3`
    color: ${(prop) => prop.theme.text3};
+   text-align: center;
+   margin: 2rem 0;
 `;
 export const Navigation = ({ taskName }) => {
    const { user, setUser } = useUser();
@@ -39,7 +41,6 @@ export const Navigation = ({ taskName }) => {
    return (
       <>
          <nav>
-            <TaskName>{taskName}</TaskName>
             <Flex style={{ marginBottom: "2rem" }} flexWrap="nowrap">
                <Logo />
                <div className="nav-user-info">
@@ -81,6 +82,7 @@ export const Navigation = ({ taskName }) => {
                   </Menu>
                </div>
             </Flex>
+            <TaskName>{taskName}</TaskName>
          </nav>
       </>
    );
