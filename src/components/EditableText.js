@@ -1,83 +1,130 @@
-import React, { useState } from 'react';
-import { Flex } from './Flex';
-import { Highlight } from './PageComponents';
-import styled from 'styled-components'
-import { useUIState } from '../context/UpdateUiContext';
+import React, { useState } from "react";
+import { Flex } from "./Flex";
+import { Highlight } from "./PageComponents";
+import styled from "styled-components";
+import { useUIState } from "../context/UpdateUiContext";
+import { Icon } from "./Icon";
 
 export const EditableInput = styled.input`
    background: #00000021;
    border: none;
-   color: ${props => props.theme.text1};
+   color: ${(props) => props.theme.text1};
    font-size: 1rem;
-   font-family: 'Poppins', sans-serif;
+   font-family: "Poppins", sans-serif;
    font-weight: 400;
    margin-top: 0.5em;
    margin-bottom: 0.5em;
    line-height: 1.2rem;
-
-`
+`;
 const ColorSelect = styled(Highlight)`
    min-block-size: 1rem;
    min-inline-size: 1rem;
    cursor: pointer;
-`
+`;
 const ColorContainer = styled.div`
    display: flex;
-`
+`;
 export const EditableText = ({ title, color, taskId, stage }) => {
-   const [show, setShow] = useState(false)
+   const [isEditing, setIsEditing] = useState(false);
    const [stateText, setStateText] = useState({
       title: title,
       stage: stage,
-   })
+   });
 
-   const showColors = () => {
-      setShow(prev => !prev)
-   }
+   const showEditableInput = () => {
+      setIsEditing((prev) => !prev);
+   };
    const updateText = (e) => {
-      setStateText({ ...stateText, title: e.target.value })
-   }
-   const { setUpdateUI } = useUIState()
+      setStateText({ ...stateText, title: e.target.value });
+   };
+   const { setUpdateUI } = useUIState();
 
    const updateFunction = async (color) => {
-
       await fetch(`${process.env.REACT_APP_MDB}/columndata/${taskId}`, {
-         method: 'PUT',
+         method: "PUT",
          headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
          },
-         body: JSON.stringify({ color: color, stage: stateText.stage, title: stateText.title })
-      })
+         body: JSON.stringify({
+            color: color,
+            stage: stateText.stage,
+            title: stateText.title,
+         }),
+      });
 
-      setUpdateUI()
-   }
+      setUpdateUI();
+   };
    return (
       <>
-         <Highlight className={color} >
+         <Highlight className={color}>
             <Flex>
-               {show ?
+               {isEditing ? (
                   <>
-                     <EditableInput autoFocus type="text" value={stateText.title} onChange={updateText} />
-                     <i className="fa fa-check" aria-hidden="true" style={{ cursor: 'pointer', color: 'greenyellow' }} onClick={() => { showColors(); updateFunction(color) }}></i>
+                     <EditableInput
+                        autoFocus
+                        type="text"
+                        value={stateText.title}
+                        onChange={updateText}
+                     />
+                     <Icon
+                        className="fa fa-times"
+                        aria-hidden="true"
+                        onClick={showEditableInput}
+                        iconSize={1.1}
+                     ></Icon>
+                     <Icon
+                        className="fa fa-check"
+                        aria-hidden="true"
+                        iconSize={1.1}
+                        onClick={() => {
+                           showEditableInput();
+                           updateFunction(color);
+                        }}
+                     ></Icon>
                   </>
-                  :
+               ) : (
                   <>
                      <p>{stateText.title}</p>
-                     <i className="fa fa-pencil" aria-hidden="true" style={{ cursor: 'pointer' }} onClick={showColors}></i>
+                     <i
+                        className="fa fa-pencil"
+                        aria-hidden="true"
+                        style={{ cursor: "pointer" }}
+                        onClick={showEditableInput}
+                     ></i>
                   </>
-               }
+               )}
             </Flex>
          </Highlight>
-         {show && (
-
+         {isEditing && (
             <ColorContainer>
-               <ColorSelect onClick={() => updateFunction('pink')} className='pink'></ColorSelect>
-               <ColorSelect onClick={() => updateFunction('purple')} className='purple'></ColorSelect>
-               <ColorSelect onClick={() => updateFunction('mint')} className='mint'></ColorSelect>
-               <ColorSelect onClick={() => updateFunction('blue')} className='blue'></ColorSelect>
-               <ColorSelect onClick={() => updateFunction('warning')} className='warning'></ColorSelect>
-               <ColorSelect onClick={() => updateFunction('danger')} className='danger'></ColorSelect>
-               <ColorSelect onClick={() => updateFunction('success')} className='success'></ColorSelect>
+               <ColorSelect
+                  onClick={() => updateFunction("pink")}
+                  className="pink"
+               ></ColorSelect>
+               <ColorSelect
+                  onClick={() => updateFunction("purple")}
+                  className="purple"
+               ></ColorSelect>
+               <ColorSelect
+                  onClick={() => updateFunction("mint")}
+                  className="mint"
+               ></ColorSelect>
+               <ColorSelect
+                  onClick={() => updateFunction("blue")}
+                  className="blue"
+               ></ColorSelect>
+               <ColorSelect
+                  onClick={() => updateFunction("warning")}
+                  className="warning"
+               ></ColorSelect>
+               <ColorSelect
+                  onClick={() => updateFunction("danger")}
+                  className="danger"
+               ></ColorSelect>
+               <ColorSelect
+                  onClick={() => updateFunction("success")}
+                  className="success"
+               ></ColorSelect>
             </ColorContainer>
          )}
       </>

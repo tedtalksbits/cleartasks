@@ -2,22 +2,28 @@ import React, { useState } from "react";
 import { Box } from "./Box";
 import { Link } from "react-router-dom";
 import { Flex } from "./Flex";
-import styled from "styled-components";
-import { Menu } from "./Menu";
-import { darkTheme } from "../theme";
+import { Menu, MenuButton } from "./Menu";
 import { ControlledModal } from "./ControlledModal";
 import { Button } from "./PageComponents";
 import { useUIState } from "../context/UpdateUiContext";
 import { EditableInput } from "./EditableText";
+import { Icon } from "./Icon";
+import styled from "styled-components";
 
-const Icon = styled.i`
-   /* opacity: .2;
-      transition: all ease .25s;
-     &:hover{
-         opacity: 1;
-   } */
+const ActionButton = styled(Button)`
+   padding: 12px 10px;
+   color: ${(props) => props.theme.text};
+   display: flex;
+   margin: 0 0 1rem 0;
+   align-items: baseline;
+   i {
+      color: ${(props) => props.theme.text};
+   }
+
+   &.danger {
+      background: ${(props) => props.theme.danger};
+   }
 `;
-
 export const Task = ({ link, text, taskId }) => {
    const [isUpdating, setIsUpdating] = useState(false);
    const [showModal, setShowModal] = useState(false);
@@ -42,17 +48,22 @@ export const Task = ({ link, text, taskId }) => {
    };
    const editTask = async () => {
       try {
-         await fetch(`${process.env.REACT_APP_MDB}/edittaskname/${taskId}`, {
-            method: "PUT",
-            headers: {
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify(stateText),
-         });
+         const res = await fetch(
+            `${process.env.REACT_APP_MDB}/edittaskname/${taskId}`,
+            {
+               method: "PUT",
+               headers: {
+                  "Content-Type": "application/json",
+               },
+               body: JSON.stringify(stateText),
+            }
+         );
+
+         const update = await res.json();
+         setUpdateUI();
       } catch (error) {
          console.log(error, "Error on updating tasksname");
       }
-      setUpdateUI();
    };
    return (
       <Box>
@@ -66,53 +77,47 @@ export const Task = ({ link, text, taskId }) => {
                         setStateText({ tasksName: e.target.value })
                      }
                   />
-                  <i
+                  <Icon
+                     onClick={() => {
+                        userIsUpdating();
+                     }}
+                     className="fa fa-times danger"
+                     aria-hidden="true"
+                  ></Icon>
+                  <Icon
                      onClick={() => {
                         userIsUpdating();
                         editTask();
                      }}
-                     className="fa fa-check"
+                     className="fa fa-check success"
                      aria-hidden="true"
-                     style={{ cursor: "pointer", color: "greenyellow" }}
-                  ></i>
+                  ></Icon>
                </>
             ) : (
                <>
                   <Link to={link} style={{ flex: 1 }}>
-                     {stateText.tasksName}
+                     {text}
                   </Link>
                   <Menu
                      iconSize={1.1}
                      openIcon="fa fa-chevron-down"
                      closeIcon="fa fa-chevron-up"
+                     padding={0}
                   >
-                     <Box style={{ cursor: "pointer", padding: "10px" }}>
-                        <Flex
-                           className="menu-icon-set"
-                           onClick={userIsUpdating}
-                        >
-                           <span> Edit</span>
-                           <Icon
-                              className="fa fa-pencil"
-                              aria-hidden="true"
-                           ></Icon>
-                        </Flex>
-                     </Box>
-                     <Box
-                        style={{ cursor: "pointer", padding: "10px" }}
-                        bg={darkTheme.danger}
+                     <MenuButton onClick={userIsUpdating}>
+                        <i className="fa fa-pencil" aria-hidden="true"></i>
+                        <span> Edit</span>
+                     </MenuButton>
+                     <hr style={{ margin: 0 }} />
+                     <MenuButton
+                        className="danger"
+                        onClick={() => {
+                           setShowModal(true);
+                        }}
                      >
-                        <Flex
-                           className="menu-icon-set"
-                           onClick={() => setShowModal(true)}
-                        >
-                           <span> Delete</span>
-                           <Icon
-                              className="fa fa-times"
-                              aria-hidden="true"
-                           ></Icon>
-                        </Flex>
-                     </Box>
+                        <i className="fa fa-trash" aria-hidden="true"></i>
+                        <span> Delete</span>
+                     </MenuButton>
                   </Menu>
                </>
             )}
@@ -122,16 +127,22 @@ export const Task = ({ link, text, taskId }) => {
             onClose={() => setShowModal(false)}
          >
             <Box>
-               <h3>Delete '{text}'?</h3>
+               <p>
+                  Are you sure you want to delete this task:
+                  <strong>' {text}'</strong>?
+               </p>
                <hr />
                <Flex>
-                  <Button
-                     color={darkTheme.danger}
-                     onClick={() => deleteTask(taskId)}
+                  <ActionButton
+                     className="danger"
+                     onClick={() => {
+                        deleteTask(taskId);
+                        setShowModal(false);
+                     }}
                   >
-                     Yes
-                  </Button>
-                  <Button onClick={() => setShowModal(false)}>No</Button>
+                     Delete
+                  </ActionButton>
+                  <Button onClick={() => setShowModal(false)}>Cancel</Button>
                </Flex>
             </Box>
          </ControlledModal>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Banner, { bannerImgs, EmojiBox, emojies } from "../components/Banner";
+import Banner, { EmojiBox } from "../components/Banner";
 import { ControlledModal } from "../components/ControlledModal";
 import { Flex } from "../components/Flex";
 import { Input } from "../components/Form";
@@ -13,6 +13,7 @@ import { useParams } from "react-router-dom";
 import { Box } from "../components/Box";
 import { usePageContext } from "../context/PageContext";
 import { Navigation } from "../components/Navigation";
+import { bannerImgs, emojies } from "../data/bannerData";
 
 export const Tasks = () => {
    const { _id, name } = useParams();
@@ -26,7 +27,7 @@ export const Tasks = () => {
    //form modal
    const [showModal, setShowModal] = useState(false);
 
-   // banner state set
+   // banner state
    const taskData = {
       img: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
       emojie: "🏯",
@@ -100,7 +101,7 @@ export const Tasks = () => {
                </EmojiBox>
             </ControlledModal>
             <MainContainer style={{ minBlockSize: "100vh" }}>
-               <Navigation taskName={name} />
+               <Navigation taskName={name} showLogo={false} />
                <Flex className="home-row">
                   <Link to="/cleartasks">
                      <Box style={{ cursor: "pointer" }}>

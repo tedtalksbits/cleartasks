@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { darkTheme } from "../theme";
-import { Box } from "./Box";
 import { Flex } from "./Flex";
-import { Menu } from "./Menu";
+import { Menu, MenuButton } from "./Menu";
+import { borderRadius } from "./PageComponents";
 const FlexItems = styled.div`
    display: flex;
    justify-content: space-between;
@@ -15,8 +14,8 @@ const TodoItem = styled.div`
    cursor: pointer;
    display: inline-block;
    width: 100%;
-   padding: 0.5rem 0.8rem;
-   border-radius: 5px;
+   padding: 1.2rem 1.6rem;
+   border-radius: ${borderRadius};
    margin: 0.4rem 0;
    background: ${(props) => props.theme.surface2};
    transition: all ease-in-out 0.4s;
@@ -31,18 +30,21 @@ const TodoItem = styled.div`
       font-size: 0.75rem;
       color: ${({ theme }) => theme.text4};
    }
+   .controls {
+      margin-top: 40px;
+   }
 `;
 const IconsContainer = styled.div`
    display: flex;
    gap: 1rem;
 `;
-const Icon = styled.span`
+const Stage = styled.span`
    transition: opacity 0.3s, visibility ease-in-out 0.3s;
    cursor: pointer;
 
    i {
-      padding: 2px;
-      border-radius: 2px;
+      padding: 5px;
+      border-radius: ${borderRadius};
       transition: all 0.2s ease-in-out;
       &.success {
          border: ${(props) => props.theme.success} 1px solid;
@@ -87,14 +89,14 @@ const Icon = styled.span`
       position: absolute;
       top: -2rem;
       left: -5em;
-      border-radius: 5px;
+      border-radius: ${borderRadius};
       z-index: 2000;
       font-family: "Poppins", sans-serif;
    }
 `;
 const Picture = styled.img`
    height: 150px;
-   border-radius: 5px;
+   border-radius: ${borderRadius};
    object-fit: cover;
    width: 100%;
    margin-top: 14px;
@@ -124,25 +126,21 @@ const Todo = ({
          <Flex className="todo_top" flexWrap="nowrap">
             <p className="bold">{title}</p>
             <Menu
+               padding={0}
                iconSize={1.1}
                openIcon="fa fa-chevron-down"
                closeIcon="fa fa-chevron-up"
             >
-               <Box style={{ cursor: "pointer", padding: "10px" }}>
-                  <Flex className="menu-icon-set" onClick={navigateToEdit}>
-                     <span> Edit</span>
-                     <Icon className="fa fa-pencil" aria-hidden="true"></Icon>
-                  </Flex>
-               </Box>
-               <Box
-                  style={{ cursor: "pointer", padding: "10px" }}
-                  bg={darkTheme.danger}
-               >
-                  <Flex className="menu-icon-set" onClick={todoDelete}>
-                     <span> Delete</span>
-                     <Icon className="fa fa-times" aria-hidden="true"></Icon>
-                  </Flex>
-               </Box>
+               <MenuButton onClick={navigateToEdit}>
+                  <i className="fa fa-pencil" aria-hidden="true"></i>
+                  <span> Edit</span>
+               </MenuButton>
+               <hr style={{ margin: 0 }} />
+
+               <MenuButton className="danger" onClick={todoDelete}>
+                  <i className="fa fa-times" aria-hidden="true"></i>
+                  <span> Delete</span>
+               </MenuButton>
             </Menu>
          </Flex>
          {img && <Picture src={img} alt="todo" />}
@@ -151,7 +149,7 @@ const Todo = ({
          <FlexItems className="controls">
             <p className="todo-date">{date}</p>
             <IconsContainer className="icons-container">
-               <Icon
+               <Stage
                   className="todo-icons"
                   onClick={todoRestart}
                   text="Stage 1"
@@ -160,19 +158,19 @@ const Todo = ({
                      className={`fa fa-reply-all ${stageOneColor}`}
                      aria-hidden="true"
                   ></i>
-               </Icon>
-               <Icon className="todo-icons" onClick={todoDoing} text="Stage 2">
+               </Stage>
+               <Stage className="todo-icons" onClick={todoDoing} text="Stage 2">
                   <i
                      className={`fa fa-spinner ${stageTwoColor}`}
                      aria-hidden="true"
                   ></i>
-               </Icon>
-               <Icon className="todo-icons" onClick={todoDone} text="Stage 3">
+               </Stage>
+               <Stage className="todo-icons" onClick={todoDone} text="Stage 3">
                   <i
                      className={`fa fa-check ${stageThreeColor}`}
                      aria-hidden="true"
                   ></i>
-               </Icon>
+               </Stage>
             </IconsContainer>
          </FlexItems>
       </TodoItem>

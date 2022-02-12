@@ -11,7 +11,20 @@ const GlobalStyles = createGlobalStyle`
       background: ${({ theme }) => theme.surface1};
       color: ${(props) => props.theme.text1};
       position: relative;
-      
+   }
+   p,h1,h2,h3,small{
+      line-height: 1.4;
+   }
+   /*
+      ========================================
+      Icon
+      ========================================
+   */
+   i.ml-5 {
+      margin-left: 5px;
+   }
+   i.mr-5 {
+      margin-right: 5px;
    }
    p.custom-text{
       color: ${(props) => props.theme.text3};

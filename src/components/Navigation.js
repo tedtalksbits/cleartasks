@@ -22,12 +22,13 @@ const ThemeIcon = styled.div`
       font-size: 1.5rem;
    }
 `;
-const TaskName = styled.h3`
+const TaskName = styled.h2`
    color: ${(prop) => prop.theme.text3};
    text-align: center;
    margin: 2rem 0;
+   font-weight: 500;
 `;
-export const Navigation = ({ taskName }) => {
+export const Navigation = ({ taskName, showLogo = true }) => {
    const { user, setUser } = useUser();
    let navigate = useNavigate();
 
@@ -42,7 +43,8 @@ export const Navigation = ({ taskName }) => {
       <>
          <nav>
             <Flex style={{ marginBottom: "2rem" }} flexWrap="nowrap">
-               <Logo />
+               {showLogo && <Logo />}
+               <TaskName>{taskName}</TaskName>
                <div className="nav-user-info">
                   <Menu>
                      <ThemeIcon onClick={handleThemeChange}>
@@ -82,7 +84,6 @@ export const Navigation = ({ taskName }) => {
                   </Menu>
                </div>
             </Flex>
-            <TaskName>{taskName}</TaskName>
          </nav>
       </>
    );
