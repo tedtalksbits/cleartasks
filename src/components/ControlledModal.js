@@ -1,16 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 const Background = styled.div`
    background: #000000c4;
    height: 100%;
    width: 100%;
    overflow-y: hidden;
    position: fixed;
-   z-index: 1;
+   z-index: 1000;
    left: 0;
    top: 0;
    display: flex;
-`
+`;
 const Body = styled.div`
    /* border-radius: 5px;
    padding: 1rem; */
@@ -23,21 +23,21 @@ const Body = styled.div`
    /* height: 20rem; */
    overflow-y: auto;
    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-`
+`;
 
 export const ControlledModal = ({ children, isVisible, onClose }) => {
-
-
    return (
       <>
-         {isVisible &&
-
-            <Background onClick={onClose} className='modal-bg'>
-               <Body onClick={(e) => e.stopPropagation()} className='modal-body'>
+         {isVisible && (
+            <Background onClick={onClose} className="modal-bg">
+               <Body
+                  onClick={(e) => e.stopPropagation()}
+                  className="modal-body"
+               >
                   {children}
                </Body>
             </Background>
-         }
+         )}
       </>
-   )
-}
+   );
+};

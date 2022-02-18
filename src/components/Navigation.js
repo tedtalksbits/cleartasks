@@ -38,7 +38,7 @@ export const Navigation = ({ taskName, showLogo = true }) => {
       }
    }, [user, navigate]);
 
-   const { handleThemeChange, currTheme } = useThemeChanger();
+   const { setThemeIsDark, themeIsDark } = useThemeChanger();
    return (
       <>
          <nav>
@@ -47,12 +47,10 @@ export const Navigation = ({ taskName, showLogo = true }) => {
                <TaskName>{taskName}</TaskName>
                <div className="nav-user-info">
                   <Menu>
-                     <ThemeIcon onClick={handleThemeChange}>
+                     <ThemeIcon onClick={() => setThemeIsDark((prev) => !prev)}>
                         <i
                            className={
-                              currTheme.isDark
-                                 ? "fa fa-lightbulb-o"
-                                 : "fa fa-moon-o"
+                              themeIsDark ? "fa fa-lightbulb-o" : "fa fa-moon-o"
                            }
                         ></i>
                      </ThemeIcon>

@@ -17,9 +17,10 @@ export const EditableInput = styled.input`
    line-height: 1.2rem;
 `;
 const ColorSelect = styled(Highlight)`
-   min-block-size: 1rem;
-   min-inline-size: 1rem;
+   min-block-size: 1.75rem;
+   min-inline-size: 1.75rem;
    cursor: pointer;
+   padding: 0;
 `;
 const ColorContainer = styled.div`
    display: flex;

@@ -5,7 +5,7 @@ import { borderRadius } from "./PageComponents";
 const inputStyles = css`
    width: 100%;
    border: none;
-   padding: 0.75rem;
+   padding: 0.75rem 0.75rem 0.75rem 1.5rem;
    border-radius: ${borderRadius};
    border: none;
    font-size: 1.2rem;
@@ -14,6 +14,7 @@ const inputStyles = css`
    -moz-osx-font-smoothing: grayscale;
    color: ${(props) => props.theme.text1};
    background: ${({ theme }) => theme.surface3};
+   transition: all ease 0.25s;
 
    :hover {
       background: ${({ theme }) => theme.surface3};

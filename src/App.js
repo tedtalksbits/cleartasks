@@ -5,6 +5,7 @@ import Edit from "./pages/Edit";
 import { Tasks } from "./pages/Tasks";
 import { useThemeChanger } from "./context/ThemeChanger";
 import { HashRouter, Route, Routes } from "react-router-dom";
+import { darkTheme, lightTheme } from "./theme";
 
 const GlobalStyles = createGlobalStyle`
    body{
@@ -59,9 +60,9 @@ const GlobalStyles = createGlobalStyle`
 `;
 const Main = styled.main``;
 const App = () => {
-   const { currTheme } = useThemeChanger();
+   const { themeIsDark } = useThemeChanger();
    return (
-      <ThemeProvider theme={currTheme}>
+      <ThemeProvider theme={themeIsDark ? darkTheme : lightTheme}>
          <GlobalStyles />
          <Main>
             <HashRouter hashaType="slash">

@@ -14,7 +14,7 @@ const TodoItem = styled.div`
    cursor: pointer;
    display: inline-block;
    width: 100%;
-   padding: 1.2rem 1.6rem;
+   padding: 0.6rem 0.875rem;
    border-radius: ${borderRadius};
    margin: 0.4rem 0;
    background: ${(props) => props.theme.surface2};
@@ -31,7 +31,7 @@ const TodoItem = styled.div`
       color: ${({ theme }) => theme.text4};
    }
    .controls {
-      margin-top: 40px;
+      margin-top: 15px;
    }
 `;
 const IconsContainer = styled.div`

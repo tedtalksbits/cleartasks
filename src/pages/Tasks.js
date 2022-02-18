@@ -14,7 +14,16 @@ import { Box } from "../components/Box";
 import { usePageContext } from "../context/PageContext";
 import { Navigation } from "../components/Navigation";
 import { bannerImgs, emojies } from "../data/bannerData";
+import styled from "styled-components";
 
+const NavSeachInput = styled(Input)`
+   display: ${(props) => (props.when ? "block" : "none")};
+   transition: width 0.3s ease 0.3s;
+   padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+   font-size: 1rem;
+   max-inline-size: 375px;
+   margin-right: auto;
+`;
 export const Tasks = () => {
    const { _id, name } = useParams();
    const { user } = useUser();
@@ -24,6 +33,7 @@ export const Tasks = () => {
    const [openImages, setOpenImages] = useState(false);
    //search term
    const [search, setSearch] = useState("");
+   const [showSearch, setShowSearch] = useState(false);
    //form modal
    const [showModal, setShowModal] = useState(false);
 
@@ -75,7 +85,10 @@ export const Tasks = () => {
                <EmojiBox>
                   {emojies.map((emojie) => (
                      <div
-                        onClick={() => userSetEmojie(emojie, _id)}
+                        onClick={() => {
+                           userSetEmojie(emojie, _id);
+                           setOpenEmojies(false);
+                        }}
                         className="emoji-box"
                         key={emojie}
                      >
@@ -92,7 +105,10 @@ export const Tasks = () => {
                   {bannerImgs.map((img) => (
                      <div className="emoji-box" key={img}>
                         <img
-                           onClick={() => userSetImg(img, _id)}
+                           onClick={() => {
+                              userSetImg(img, _id);
+                              setOpenImages(false);
+                           }}
                            src={img}
                            alt="banner wallpaper"
                         />
@@ -104,7 +120,7 @@ export const Tasks = () => {
                <Navigation taskName={name} showLogo={false} />
                <Flex className="home-row">
                   <Link to="/cleartasks">
-                     <Box style={{ cursor: "pointer" }}>
+                     <Box style={{ cursor: "pointer" }} p="md">
                         <i
                            className="fa fa-home nav-icon"
                            aria-hidden="true"
@@ -113,16 +129,26 @@ export const Tasks = () => {
                   </Link>
                   <div className="spacer"></div>
                   <Flex className="nav-interactive" flexWrap="no-wrap">
-                     <Input
-                        className="custom-input"
-                        type="search"
-                        name="search"
-                        id="search"
-                        placeholder="search"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                     />
                      <Button onClick={() => setShowModal(true)}>New</Button>
+                     {showSearch ? (
+                        <NavSeachInput
+                           className="custom-input"
+                           type="search"
+                           name="search"
+                           id="search"
+                           placeholder="search"
+                           value={search}
+                           onChange={(e) => setSearch(e.target.value)}
+                           when={showSearch}
+                           onBlur={() => setShowSearch(false)}
+                           onClick={() => setShowSearch(true)}
+                           autoFocus
+                        />
+                     ) : (
+                        <Button onClick={() => setShowSearch(true)}>
+                           <i className="fa fa-search" aria-hidden="true"></i>
+                        </Button>
+                     )}
                   </Flex>
                </Flex>
                <ControlledModal
@@ -142,6 +168,7 @@ export const Tasks = () => {
                   />
                </ControlledModal>
                <hr />
+
                <RenderTable search={search} taskId={_id} userId={user.uid} />
             </MainContainer>
          </MainGrid>

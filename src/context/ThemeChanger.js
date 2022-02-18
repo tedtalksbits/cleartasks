@@ -1,33 +1,23 @@
 import React, { useContext } from "react";
 import useLocalStorageState from "use-local-storage-state";
-import { darkTheme, lightTheme } from "../theme";
 
 // create context
-const ThemeChangeContext = React.createContext()
+const ThemeChangeContext = React.createContext();
 // custom hook
 export function useThemeChanger() {
-   return useContext(ThemeChangeContext)
+   return useContext(ThemeChangeContext);
 }
 
-// provider 
+// provider
 
 export const ThemeChangeProvider = ({ children }) => {
-   const dark = darkTheme;
-   const light = lightTheme;
-   const [currTheme, setCurrTheme] = useLocalStorageState('theme', darkTheme);
-
-   const handleThemeChange = () => {
-      if (currTheme === dark) {
-         setCurrTheme(light)
-      }
-      else {
-         setCurrTheme(dark)
-      }
-   }
-
+   const [themeIsDark, setThemeIsDark] = useLocalStorageState(
+      "themeIsDark",
+      true
+   );
    return (
-      <ThemeChangeContext.Provider value={{ currTheme, setCurrTheme, handleThemeChange }}>
+      <ThemeChangeContext.Provider value={{ themeIsDark, setThemeIsDark }}>
          {children}
       </ThemeChangeContext.Provider>
-   )
-}
+   );
+};

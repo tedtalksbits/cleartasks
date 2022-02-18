@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 import React from "react";
 
-export const bannerSize = 25;
+export const bannerSize = 17;
 export const bannerMb = 4;
 export const bannerHeight = bannerSize + bannerMb;
-export const borderRadius = "15px";
+export const borderRadius = "12px";
 export const MainGrid = styled.main`
    display: grid;
    grid-template-columns: 1fr min(150ch, 100%) 1fr;
@@ -66,9 +66,9 @@ export const Button = styled.button`
       animation: pulse-animation 1s infinite;
    }
 
-   & :first-child {
+   /* & :first-child {
       margin-right: 0.4rem;
-   }
+   } */
 
    @keyframes pulse-animation {
       0% {
@@ -199,8 +199,7 @@ export const CardStyles = css`
 export const CardGrid = styled.div`
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-   grid-gap: 1rem;
-
+   column-gap: 1rem;
    img {
       width: 100%;
       height: 200px;

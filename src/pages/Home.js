@@ -55,7 +55,10 @@ const Home = () => {
                <EmojiBox>
                   {emojies.map((emojie) => (
                      <div
-                        onClick={() => userSetPageEmojie(emojie)}
+                        onClick={() => {
+                           userSetPageEmojie(emojie);
+                           setOpenEmojies(false);
+                        }}
                         className="emoji-box"
                         key={emojie}
                      >
@@ -72,7 +75,10 @@ const Home = () => {
                   {bannerImgs.map((img) => (
                      <div className="emoji-box" key={img}>
                         <img
-                           onClick={() => userSetPageImg(img)}
+                           onClick={() => {
+                              userSetPageImg(img);
+                              setOpenImages(false);
+                           }}
                            src={img}
                            alt="banner wallpaper"
                         />

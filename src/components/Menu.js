@@ -30,7 +30,8 @@ const AbsoluteChild = styled.aside`
    background: ${(props) => props.theme.surface4};
    display: flex;
    flex-direction: column;
-   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+      rgba(0, 0, 0, 0.22) 0px 15px 12px;
    position: absolute;
    right: 1rem;
    z-index: 2;

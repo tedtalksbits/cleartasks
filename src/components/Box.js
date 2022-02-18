@@ -7,7 +7,7 @@ export const Box = styled.div`
       props.p === "sm"
          ? ".5rem"
          : props.p === "md"
-         ? "1rem"
+         ? "0.5rem 0.8rem"
          : props.p === "lg"
          ? "1.5rem"
          : "1rem"};
