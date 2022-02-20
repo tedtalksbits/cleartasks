@@ -64,6 +64,7 @@ export const Tasks = () => {
    const iconButtonPostion = {
       right: "1rem",
       top: ".4rem",
+      zIndex: 20,
    };
    return (
       user && (

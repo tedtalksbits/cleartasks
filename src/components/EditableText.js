@@ -4,6 +4,7 @@ import { Highlight } from "./PageComponents";
 import styled from "styled-components";
 import { useUIState } from "../context/UpdateUiContext";
 import { Icon } from "./Icon";
+import { OText } from "./OverflowText";
 
 export const EditableInput = styled.input`
    background: #00000021;
@@ -15,7 +16,9 @@ export const EditableInput = styled.input`
    margin-top: 0.5em;
    margin-bottom: 0.5em;
    line-height: 1.2rem;
+   max-inline-size: max-content;
 `;
+
 const ColorSelect = styled(Highlight)`
    min-block-size: 1.75rem;
    min-inline-size: 1.75rem;
@@ -85,7 +88,7 @@ export const EditableText = ({ title, color, taskId, stage }) => {
                   </>
                ) : (
                   <>
-                     <p>{stateText.title}</p>
+                     <OText>{stateText.title}</OText>
                      <i
                         className="fa fa-pencil"
                         aria-hidden="true"

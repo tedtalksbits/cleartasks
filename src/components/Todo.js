@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { Flex } from "./Flex";
 import { Menu, MenuButton } from "./Menu";
 import { borderRadius } from "./PageComponents";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 const FlexItems = styled.div`
    display: flex;
    justify-content: space-between;
@@ -32,6 +35,12 @@ const TodoItem = styled.div`
    }
    .controls {
       margin-top: 15px;
+   }
+   p.custom-text {
+      white-space: break-spaces;
+   }
+   a {
+      color: #33a3ff;
    }
 `;
 const IconsContainer = styled.div`
@@ -120,7 +129,6 @@ const Todo = ({
    const navigateToEdit = () => {
       navigate(`/cleartasks/edit/${todoId}/${taskId}`);
    };
-
    return (
       <TodoItem onDoubleClick={navigateToEdit} className="todo">
          <Flex className="todo_top" flexWrap="nowrap">
@@ -144,8 +152,7 @@ const Todo = ({
             </Menu>
          </Flex>
          {img && <Picture src={img} alt="todo" />}
-         <p className="custom-text">{text}</p>
-
+         <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
          <FlexItems className="controls">
             <p className="todo-date">{date}</p>
             <IconsContainer className="icons-container">

@@ -70,8 +70,8 @@ hr {
    height: 1px;
    border: none;
    border-bottom: 1px solid rgba(112, 112, 112, 0.09);
-   margin-block-start: 1em;
-   margin-block-end: 1em;
+   margin-block-start: 0.5rem;
+   margin-block-end: 0.5rem;
 }
 p.bold {
    font-weight: 600;
