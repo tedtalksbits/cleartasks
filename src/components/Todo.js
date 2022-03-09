@@ -22,6 +22,7 @@ const TodoItem = styled.div`
    margin: 0.4rem 0;
    background: ${(props) => props.theme.surface2};
    transition: all ease-in-out 0.4s;
+   white-space: break-spaces;
 
    :hover {
       background: ${(props) => props.theme.surface3};
@@ -40,7 +41,25 @@ const TodoItem = styled.div`
       white-space: break-spaces;
    }
    a {
-      color: #33a3ff;
+      max-width: 25ch;
+      width: min-content;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      background: #34a2fe1a;
+      border-radius: 5px;
+      padding: 2px 5px;
+      display: inline-block;
+      border: 1px solid #34a2feaa;
+      text-decoration: none;
+      transition: background 0.25s ease 0.09s;
+   }
+   a:hover {
+      background: #34a2feaa;
+   }
+   a:visited {
+      background: #5f819199;
+      border: 1px solid #5f8191aa;
    }
 `;
 const IconsContainer = styled.div`

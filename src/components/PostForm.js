@@ -10,6 +10,7 @@ const PostForm = ({ setShowForm, url }) => {
       itemTitle: "",
       itemImage: "",
    });
+   const [invalidPost, setInvalidPost] = useState(false);
 
    const resetForm = () => {
       setNewItem({
@@ -19,6 +20,9 @@ const PostForm = ({ setShowForm, url }) => {
       });
    };
 
+   function handleChange(e) {
+      setNewItem({ ...newItem, [e.target.name]: e.target.value });
+   }
    const postTodo = async () => {
       if (newItem.itemTitle) {
          try {
@@ -54,44 +58,40 @@ const PostForm = ({ setShowForm, url }) => {
       >
          <FormField icon={<i className="fa fa-font"></i>} title="Title">
             <Input
-               name="Title"
-               id="Title"
+               name="itemTitle"
+               id="itemTitle"
                className="field-input"
                placeholder="Empty"
                value={newItem.itemTitle}
-               onChange={(e) =>
-                  setNewItem({ ...newItem, itemTitle: e.target.value })
-               }
+               onChange={handleChange}
                required
                autoFocus
+               maxLength="50"
             />
          </FormField>
          <hr />
          <FormField icon={<i className="fa fa-image"></i>} title="Image">
             <Input
-               name="Image"
-               id="Image"
+               name="itemImage"
+               id="itemImage"
                className="field-input"
                placeholder="Empty"
                value={newItem.itemImage}
-               onChange={(e) =>
-                  setNewItem({ ...newItem, itemImage: e.target.value })
-               }
+               onChange={handleChange}
             />
          </FormField>
          <hr />
          <FormField icon={<i className="fa fa-paragraph"></i>} title="Text">
             <TextArea
-               name="Text"
-               id="Text"
+               name="itemText"
+               id="itemText"
                rows="3"
                className="field-input"
                placeholder="Empty"
                value={newItem.itemText}
-               onChange={(e) =>
-                  setNewItem({ ...newItem, itemText: e.target.value })
-               }
+               onChange={handleChange}
                autoFocus={inputFocus}
+               maxLength="250"
             />
          </FormField>
          <MDButtonBar>
@@ -124,15 +124,19 @@ const PostForm = ({ setShowForm, url }) => {
                <i class="fa fa-link" aria-hidden="true"></i>
             </label>
          </MDButtonBar>
-         <Button
-            style={{ display: "block", marginLeft: "auto" }}
-            onClick={() => {
-               postTodo();
-            }}
-         >
-            <i className="fa fa-paper-plane"></i>
-            Create
-         </Button>
+         {!invalidPost ? (
+            <Button
+               style={{ display: "block", marginLeft: "auto" }}
+               onClick={() => {
+                  postTodo();
+               }}
+            >
+               <i className="fa fa-paper-plane"></i>
+               Create
+            </Button>
+         ) : (
+            <p>Invalid post</p>
+         )}
       </Form>
    );
 };

@@ -4,12 +4,26 @@ import { Link } from "react-router-dom";
 import { Flex } from "./Flex";
 import { Menu, MenuButton } from "./Menu";
 import { ControlledModal } from "./ControlledModal";
-import { Button } from "./PageComponents";
+import { Button, Highlight } from "./PageComponents";
 import { useUIState } from "../context/UpdateUiContext";
 import { EditableInput } from "./EditableText";
 import { Icon } from "./Icon";
 import styled from "styled-components";
 
+const NewStatusIndicator = styled(Highlight)`
+   position: absolute;
+   right: -12px;
+   top: -12px;
+   font-size: 12px;
+   border-radius: 50%;
+   padding: 0.5rem;
+   height: 12px;
+   width: 12px;
+   backdrop-filter: blur(40px);
+`;
+const TaskBox = styled(Box)`
+   position: relative;
+`;
 const ActionButton = styled(Button)`
    padding: 12px 10px;
    color: ${(props) => props.theme.text};
@@ -24,7 +38,7 @@ const ActionButton = styled(Button)`
       background: ${(props) => props.theme.danger};
    }
 `;
-export const Task = ({ link, text, taskId }) => {
+export const Task = ({ link, text, taskId, newItem }) => {
    const [isUpdating, setIsUpdating] = useState(false);
    const [showModal, setShowModal] = useState(false);
    const { setUpdateUI } = useUIState();
@@ -66,7 +80,7 @@ export const Task = ({ link, text, taskId }) => {
       }
    };
    return (
-      <Box>
+      <TaskBox>
          <Flex flexWrap="nowrap">
             {isUpdating ? (
                <>
@@ -76,6 +90,7 @@ export const Task = ({ link, text, taskId }) => {
                      onChange={(e) =>
                         setStateText({ tasksName: e.target.value })
                      }
+                     maxLength="25"
                   />
                   <Icon
                      onClick={() => {
@@ -119,6 +134,7 @@ export const Task = ({ link, text, taskId }) => {
                         <span> Delete</span>
                      </MenuButton>
                   </Menu>
+                  {newItem && <NewStatusIndicator className="danger" />}
                </>
             )}
          </Flex>
@@ -146,6 +162,6 @@ export const Task = ({ link, text, taskId }) => {
                </Flex>
             </Box>
          </ControlledModal>
-      </Box>
+      </TaskBox>
    );
 };

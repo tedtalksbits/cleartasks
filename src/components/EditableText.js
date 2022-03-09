@@ -69,6 +69,8 @@ export const EditableText = ({ title, color, taskId, stage }) => {
                         type="text"
                         value={stateText.title}
                         onChange={updateText}
+                        maxLength="15"
+                        style={{ width: "min-content" }}
                      />
                      <Icon
                         className="fa fa-times"
