@@ -21,6 +21,11 @@ const NewStatusIndicator = styled(Highlight)`
    width: 12px;
    backdrop-filter: blur(40px);
 `;
+const TaskLink = styled(Link)`
+   &:visited {
+      color: ${({ theme }) => theme.text2};
+   }
+`;
 const TaskBox = styled(Box)`
    position: relative;
 `;
@@ -110,9 +115,9 @@ export const Task = ({ link, text, taskId, newItem }) => {
                </>
             ) : (
                <>
-                  <Link to={link} style={{ flex: 1 }}>
+                  <TaskLink to={link} style={{ flex: 1 }}>
                      {text}
-                  </Link>
+                  </TaskLink>
                   <Menu
                      iconSize={1.1}
                      openIcon="fa fa-chevron-down"

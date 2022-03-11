@@ -30,7 +30,7 @@ const TodoItem = styled.div`
          color: ${({ theme }) => theme.text1};
       }
    }
-   p.todo-date {
+   p.light-text {
       font-size: 0.75rem;
       color: ${({ theme }) => theme.text4};
    }
@@ -60,6 +60,12 @@ const TodoItem = styled.div`
    a:visited {
       background: #5f819199;
       border: 1px solid #5f8191aa;
+   }
+   ul {
+      margin: 0;
+   }
+   ul li {
+      line-height: 0;
    }
 `;
 const IconsContainer = styled.div`
@@ -144,14 +150,16 @@ const Todo = ({
    stageThreeColor,
    stageOneColor,
 }) => {
+   const today = new Date().toLocaleDateString();
    const navigate = useNavigate();
    const navigateToEdit = () => {
       navigate(`/cleartasks/edit/${todoId}/${taskId}`);
    };
    return (
       <TodoItem onDoubleClick={navigateToEdit} className="todo">
+         <p className="light-text"> {today === date && "new"}</p>
          <Flex className="todo_top" flexWrap="nowrap">
-            <p className="bold">{title}</p>
+            <h3 className="bold">{title}</h3>
             <Menu
                padding={0}
                iconSize={1.1}
@@ -173,7 +181,7 @@ const Todo = ({
          {img && <Picture src={img} alt="todo" />}
          <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
          <FlexItems className="controls">
-            <p className="todo-date">{date}</p>
+            <p className="light-text">{date}</p>
             <IconsContainer className="icons-container">
                <Stage
                   className="todo-icons"

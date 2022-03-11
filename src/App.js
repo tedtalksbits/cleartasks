@@ -6,8 +6,13 @@ import { Tasks } from "./pages/Tasks";
 import { useThemeChanger } from "./context/ThemeChanger";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { darkTheme, lightTheme } from "./theme";
+import Nav from "./components/Nav";
+import SplitView from "./components/SplitView";
 
 const GlobalStyles = createGlobalStyle`
+   html{
+      font-size: 14px;
+   }
    body{
       background: ${({ theme }) => theme.surface1};
       color: ${(props) => props.theme.text1};
@@ -64,6 +69,7 @@ const App = () => {
    return (
       <ThemeProvider theme={themeIsDark ? darkTheme : lightTheme}>
          <GlobalStyles />
+
          <Main>
             <HashRouter hashaType="slash">
                <Routes>
