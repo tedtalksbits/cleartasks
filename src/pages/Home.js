@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect, useRef } from "react/cjs/react.production.min";
 import Banner, { EmojiBox } from "../components/Banner";
 import { ControlledModal } from "../components/ControlledModal";
 import { DataLoader } from "../components/DataLoader";
@@ -20,6 +21,22 @@ const mainContainerSize = {
    minBlockSize: `calc(100vh - ${bannerHeight})`,
 };
 const Home = () => {
+   // const inputRef = useRef(null);
+
+   // console.log(inputRef.current);
+
+   // images
+   const onChange = (e) => {
+      const uploadedImg = e.target.files[0];
+      console.log(uploadedImg);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+         const img = reader.result;
+         setPageData({ ...pageData, home: { ...pageData.home, img: img } });
+      };
+      reader.readAsDataURL(uploadedImg);
+   };
+
    const { user } = useUser();
    // banner interaction
    const [openEmojies, setOpenEmojies] = useState(false);
@@ -84,6 +101,13 @@ const Home = () => {
                         />
                      </div>
                   ))}
+                  <input
+                     type="file"
+                     name="imageupload"
+                     id="imageupload"
+                     onChange={onChange}
+                     accept=".jpg"
+                  />
                </EmojiBox>
             </ControlledModal>
             <MainContainer style={mainContainerSize}>

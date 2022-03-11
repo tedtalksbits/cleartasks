@@ -17,6 +17,7 @@ export const darkTheme = {
    pink: "#ed40d66e",
    mint: "#40edc86e",
    purple: "#6e40ed6e",
+   shadow: "rgba(0, 0, 0, 0.2)",
    isDark: true,
 };
 export const lightTheme = {
@@ -24,10 +25,10 @@ export const lightTheme = {
    text2: "hsl(200 50% 30%)",
    text3: "hsl(200 5% 34%)",
    text4: "hsla(200, 5%, 34%, 0.45)",
-   surface1: "#e1e7ea",
-   surface2: "#fcfdfd",
+   surface1: "#f5f6fa",
+   surface2: "#ffffff",
    surface3: "hsl(200 13% 96%)",
-   surface4: "#ffffff",
+   surface4: "#fcfdfd",
    brand: "hsl(45 85% 54%)",
    brand2: "hsl(45 85% 24%)",
    brand3: "hsl(45 85% 14%)",
@@ -38,5 +39,6 @@ export const lightTheme = {
    pink: "#ed40d682",
    mint: "#40edc882",
    purple: "#6e40ed82",
+   shadow: "rgba(149, 157, 165, 0.2)",
    isDark: false,
 };

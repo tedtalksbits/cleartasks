@@ -21,11 +21,18 @@ const TodoItem = styled.div`
    border-radius: ${borderRadius};
    margin: 0.4rem 0;
    background: ${(props) => props.theme.surface2};
-   transition: all ease-in-out 0.4s;
+   transition: all ease-in-out 0.3s 0.1s;
    white-space: break-spaces;
+   box-shadow: ${({ theme }) => theme.shadow} 0px 8px 24px;
 
+   h3 {
+      max-inline-size: 25ch;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+   }
    :hover {
-      background: ${(props) => props.theme.surface3};
+      box-shadow: ${({ theme }) => theme.shadow} 0px 1px 4px;
       p.custom-text {
          color: ${({ theme }) => theme.text1};
       }
@@ -65,7 +72,7 @@ const TodoItem = styled.div`
       margin: 0;
    }
    ul li {
-      line-height: 0;
+      white-space: break-spaces;
    }
 `;
 const IconsContainer = styled.div`
@@ -131,7 +138,7 @@ const Stage = styled.span`
 const Picture = styled.img`
    height: 150px;
    border-radius: ${borderRadius};
-   object-fit: cover;
+   object-fit: contain;
    width: 100%;
    margin-top: 14px;
 `;
@@ -157,14 +164,16 @@ const Todo = ({
    };
    return (
       <TodoItem onDoubleClick={navigateToEdit} className="todo">
-         <p className="light-text"> {today === date && "new"}</p>
+         {today === date && <p className="light-text">new</p>}
          <Flex className="todo_top" flexWrap="nowrap">
-            <h3 className="bold">{title}</h3>
+            <h3 className="bold" title={title}>
+               {title}
+            </h3>
             <Menu
                padding={0}
                iconSize={1.1}
-               openIcon="fa fa-chevron-down"
-               closeIcon="fa fa-chevron-up"
+               openIcon="fa fa-ellipsis-v"
+               closeIcon="fa fa-ellipsis-v"
             >
                <MenuButton onClick={navigateToEdit}>
                   <i className="fa fa-pencil" aria-hidden="true"></i>

@@ -52,8 +52,8 @@ const AbsoluteChild = styled.aside`
 `;
 export const Menu = ({
    children,
-   openIcon = "fa fa-user-circle",
-   closeIcon = "fa fa-user-circle-o",
+   openIcon = "fa fa-angle-down",
+   closeIcon = "fa fa-angle-up",
    iconSize = 2.5,
    padding = 1,
 }) => {

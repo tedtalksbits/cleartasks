@@ -22,12 +22,23 @@ const NewStatusIndicator = styled(Highlight)`
    backdrop-filter: blur(40px);
 `;
 const TaskLink = styled(Link)`
+   max-inline-size: 20ch;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   overflow: hidden;
    &:visited {
       color: ${({ theme }) => theme.text2};
    }
 `;
 const TaskBox = styled(Box)`
    position: relative;
+   box-shadow: ${({ theme }) => theme.shadow} 0px 8px 24px;
+   border: none;
+   background: ${({ theme }) => theme.surface2};
+   transition: box-shadow 0.3s ease 0.1s;
+   &:hover {
+      box-shadow: ${({ theme }) => theme.shadow} 0px 1px 4px;
+   }
 `;
 const ActionButton = styled(Button)`
    padding: 12px 10px;
@@ -115,13 +126,13 @@ export const Task = ({ link, text, taskId, newItem }) => {
                </>
             ) : (
                <>
-                  <TaskLink to={link} style={{ flex: 1 }}>
+                  <TaskLink to={link} style={{ flex: 1 }} title={text}>
                      {text}
                   </TaskLink>
                   <Menu
                      iconSize={1.1}
-                     openIcon="fa fa-chevron-down"
-                     closeIcon="fa fa-chevron-up"
+                     openIcon="fa fa-ellipsis-v"
+                     closeIcon="fa fa-ellipsis-v"
                      padding={0}
                   >
                      <MenuButton onClick={userIsUpdating}>

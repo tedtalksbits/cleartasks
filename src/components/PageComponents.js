@@ -5,7 +5,7 @@ export const bannerSize = 17;
 export const bannerMb = 4;
 export const bannerHeight = bannerSize + bannerMb;
 export const borderRadius = "12px";
-export const MainGrid = styled.main`
+export const MainGrid = styled.div`
    display: grid;
    grid-template-columns: 1fr min(150ch, 100%) 1fr;
    overflow-x: hidden;

@@ -45,18 +45,40 @@ export const Navigation = ({ taskName, showLogo = true }) => {
             <Flex style={{ marginBottom: "2rem" }} flexWrap="nowrap">
                {showLogo && <Logo />}
                <TaskName>{taskName}</TaskName>
-               <div className="nav-user-info">
-                  <Menu>
-                     <ThemeIcon onClick={() => setThemeIsDark((prev) => !prev)}>
-                        <i
-                           className={
-                              themeIsDark ? "fa fa-lightbulb-o" : "fa fa-moon-o"
-                           }
-                        ></i>
-                     </ThemeIcon>
+               <Flex className="nav-user-info">
+                  <Avatar
+                     src={
+                        user.photoURL ||
+                        "https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
+                     }
+                  />
+                  <Menu
+                     openIcon="fa fa-caret-down"
+                     closeIcon="fa fa-caret-up"
+                     iconSize={2}
+                  >
+                     <Flex>
+                        <span>
+                           Switch Theme{" "}
+                           <i
+                              className="fa fa-arrow-right animate__animated animate__infinite animate__slideOutRight"
+                              aria-hidden="true"
+                           ></i>
+                        </span>
+                        <ThemeIcon
+                           onClick={() => setThemeIsDark((prev) => !prev)}
+                        >
+                           <i
+                              className={
+                                 themeIsDark
+                                    ? "fa fa-lightbulb-o"
+                                    : "fa fa-moon-o"
+                              }
+                           ></i>
+                        </ThemeIcon>
+                     </Flex>
                      <hr />
                      <Flex>
-                        <Avatar src={user.photoURL || ""} />
                         <div className="user-info">
                            <p style={{ margin: 0 }}>
                               {user.displayName || "no user"}
@@ -80,7 +102,7 @@ export const Navigation = ({ taskName, showLogo = true }) => {
                         Log out
                      </Button>
                   </Menu>
-               </div>
+               </Flex>
             </Flex>
          </nav>
       </>

@@ -6,9 +6,6 @@ import { Tasks } from "./pages/Tasks";
 import { useThemeChanger } from "./context/ThemeChanger";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { darkTheme, lightTheme } from "./theme";
-import Nav from "./components/Nav";
-import SplitView from "./components/SplitView";
-
 const GlobalStyles = createGlobalStyle`
    html{
       font-size: 14px;
