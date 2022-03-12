@@ -69,7 +69,7 @@ export const EditableText = ({ title, color, taskId, stage }) => {
                         type="text"
                         value={stateText.title}
                         onChange={updateText}
-                        maxLength="15"
+                        maxLength="35"
                         style={{ width: "min-content" }}
                      />
                      <Icon
