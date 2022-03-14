@@ -31,7 +31,7 @@ const TaskForm = ({ setShowForm, userId, username }) => {
                body: JSON.stringify(newObj),
             });
 
-            const result = await res.json();
+            await res.json();
             // console.log(result);
             resetForm();
             setUpdateUI();

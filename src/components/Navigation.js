@@ -27,6 +27,10 @@ const TaskName = styled.h2`
    text-align: center;
    margin: 2rem 0;
    font-weight: 500;
+   max-inline-size: 15ch;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   overflow: hidden;
 `;
 export const Navigation = ({ taskName, showLogo = true }) => {
    const { user, setUser } = useUser();
@@ -44,65 +48,51 @@ export const Navigation = ({ taskName, showLogo = true }) => {
          <nav>
             <Flex style={{ marginBottom: "2rem" }} flexWrap="nowrap">
                {showLogo && <Logo />}
-               <TaskName>{taskName}</TaskName>
-               <Flex className="nav-user-info">
-                  <Avatar
-                     src={
-                        user.photoURL ||
-                        "https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
-                     }
-                  />
-                  <Menu
-                     openIcon="fa fa-caret-down"
-                     closeIcon="fa fa-caret-up"
-                     iconSize={2}
-                  >
-                     <Flex>
-                        <span>
-                           Switch Theme{" "}
-                           <i
-                              className="fa fa-arrow-right animate__animated animate__infinite animate__slideOutRight"
-                              aria-hidden="true"
-                           ></i>
-                        </span>
-                        <ThemeIcon
-                           onClick={() => setThemeIsDark((prev) => !prev)}
+               <TaskName title={taskName}>{taskName}</TaskName>
+
+               <Menu openIcon="fa fa-times" closeIcon="fa fa-bars" iconSize={2}>
+                  <Flex>
+                     <span>
+                        Switch Theme{" "}
+                        <i
+                           className="fa fa-arrow-right animate__animated animate__infinite animate__slideOutRight"
+                           aria-hidden="true"
+                        ></i>
+                     </span>
+                     <ThemeIcon onClick={() => setThemeIsDark((prev) => !prev)}>
+                        <i
+                           className={
+                              themeIsDark ? "fa fa-lightbulb-o" : "fa fa-moon-o"
+                           }
+                        ></i>
+                     </ThemeIcon>
+                  </Flex>
+                  <hr />
+                  <Flex>
+                     <Avatar src={user.photoURL} />
+                     <div className="user-info">
+                        <p style={{ margin: 0 }}>
+                           {user.displayName || "no user"}
+                        </p>
+                        <p
+                           className="custom-text"
+                           style={{ fontSize: ".9rem" }}
                         >
-                           <i
-                              className={
-                                 themeIsDark
-                                    ? "fa fa-lightbulb-o"
-                                    : "fa fa-moon-o"
-                              }
-                           ></i>
-                        </ThemeIcon>
-                     </Flex>
-                     <hr />
-                     <Flex>
-                        <div className="user-info">
-                           <p style={{ margin: 0 }}>
-                              {user.displayName || "no user"}
-                           </p>
-                           <p
-                              className="custom-text"
-                              style={{ fontSize: ".9rem" }}
-                           >
-                              {user.email || "no user"}
-                           </p>
-                        </div>
-                     </Flex>
-                     <hr />
-                     <Button
-                        onClick={() => {
-                           setUser(null);
-                           navigate("/cleartasks");
-                        }}
-                        style={{ margin: 0 }}
-                     >
-                        Log out
-                     </Button>
-                  </Menu>
-               </Flex>
+                           {user.email || "no user"}
+                        </p>
+                     </div>
+                  </Flex>
+                  <hr />
+                  <Button
+                     onClick={() => {
+                        setUser(null);
+                        navigate("/cleartasks");
+                     }}
+                     style={{ margin: 0 }}
+                  >
+                     Log out
+                  </Button>
+               </Menu>
             </Flex>
          </nav>
       </>

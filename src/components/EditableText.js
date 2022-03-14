@@ -70,7 +70,7 @@ export const EditableText = ({ title, color, taskId, stage }) => {
                         value={stateText.title}
                         onChange={updateText}
                         maxLength="35"
-                        style={{ width: "min-content" }}
+                        style={{ width: "min-content", fontSize: "1.1rem" }}
                      />
                      <Icon
                         className="fa fa-times"
@@ -90,7 +90,7 @@ export const EditableText = ({ title, color, taskId, stage }) => {
                   </>
                ) : (
                   <>
-                     <OText>{stateText.title}</OText>
+                     <OText title={stateText.title}>{stateText.title}</OText>
                      <i
                         className="fa fa-pencil"
                         aria-hidden="true"

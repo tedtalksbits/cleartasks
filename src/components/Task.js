@@ -78,18 +78,13 @@ export const Task = ({ link, text, taskId, newItem }) => {
    };
    const editTask = async () => {
       try {
-         const res = await fetch(
-            `${process.env.REACT_APP_MDB}/edittaskname/${taskId}`,
-            {
-               method: "PUT",
-               headers: {
-                  "Content-Type": "application/json",
-               },
-               body: JSON.stringify(stateText),
-            }
-         );
-
-         const update = await res.json();
+         await fetch(`${process.env.REACT_APP_MDB}/edittaskname/${taskId}`, {
+            method: "PUT",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify(stateText),
+         });
          setUpdateUI();
       } catch (error) {
          console.log(error, "Error on updating tasksname");

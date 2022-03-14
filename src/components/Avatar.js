@@ -8,9 +8,8 @@ const Image = styled.img`
    border-radius: 50%;
    object-fit: cover;
    background: orange;
+   margin: auto;
 `;
 export const Avatar = ({ src }) => {
    return <Image src={src} alt="user avatar" />;
 };
-
-

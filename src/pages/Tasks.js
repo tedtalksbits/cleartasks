@@ -10,7 +10,6 @@ import RenderTable from "../components/RenderTable";
 import { useUser } from "../context/UserContext";
 import { useParams } from "react-router-dom";
 import { Box } from "../components/Box";
-import { usePageContext } from "../context/PageContext";
 import { Navigation } from "../components/Navigation";
 import styled from "styled-components";
 import CustomBanner from "../components/CustomBanner";

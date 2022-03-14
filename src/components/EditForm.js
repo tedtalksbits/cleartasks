@@ -61,7 +61,7 @@ const EditForm = ({ itemId, taskId, task }) => {
                id="Title"
                className="field-input"
                placeholder="Empty"
-               value={todo.itemTitle}
+               value={todo.itemTitle || ""}
                onChange={(e) => setTodo({ ...todo, itemTitle: e.target.value })}
                required
                autoFocus
@@ -74,7 +74,7 @@ const EditForm = ({ itemId, taskId, task }) => {
                id="Image"
                className="field-input"
                placeholder="Empty"
-               value={todo.itemImage}
+               value={todo.itemImage || ""}
                onChange={(e) => setTodo({ ...todo, itemImage: e.target.value })}
             />
          </FormField>
@@ -86,7 +86,7 @@ const EditForm = ({ itemId, taskId, task }) => {
                rows="10"
                className="field-input"
                placeholder="Empty"
-               value={todo.itemText}
+               value={todo.itemText || ""}
                onChange={(e) => setTodo({ ...todo, itemText: e.target.value })}
                autoFocus={inputFocus}
             />
@@ -97,28 +97,28 @@ const EditForm = ({ itemId, taskId, task }) => {
                onClick={() => addMdToState("# ")}
                title="Heading"
             >
-               <i class="fa fa-header" aria-hidden="true"></i>
+               <i className="fa fa-header" aria-hidden="true"></i>
             </label>
             <label
                htmlFor="Text"
                onClick={() => addMdToState("**bold text**")}
                title="Bold"
             >
-               <i class="fa fa-bold" aria-hidden="true"></i>
+               <i className="fa fa-bold" aria-hidden="true"></i>
             </label>
             <label
                htmlFor="Text"
                onClick={() => addMdToState("- ")}
                title="Bulleted List"
             >
-               <i class="fa fa-list" aria-hidden="true"></i>
+               <i className="fa fa-list" aria-hidden="true"></i>
             </label>
             <label
                htmlFor="Text"
                onClick={() => addMdToState("[title](https://www.example.com) ")}
                title="Link"
             >
-               <i class="fa fa-link" aria-hidden="true"></i>
+               <i className="fa fa-link" aria-hidden="true"></i>
             </label>
          </MDButtonBar>
          <div className="radios">

@@ -78,10 +78,9 @@ p.bold {
 }
 
 .custom-heading {
-   font-size: 2.5rem;
+   font-size: 2rem;
    font-weight: 700;
    margin-top: 0;
-   margin-bottom: 0.75em;
    letter-spacing: -0.01em;
    line-height: 1.2;
 }

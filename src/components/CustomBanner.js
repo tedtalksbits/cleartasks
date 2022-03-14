@@ -107,9 +107,11 @@ const CustomBanner = ({ localKey, image }) => {
    // banner state
    const [openEmojies, setOpenEmojies] = useState(false);
    const [openImages, setOpenImages] = useState(false);
+   const defaultBannerImage =
+      "https://images.unsplash.com/photo-1542500186-6edb30855637?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80";
    const taskData = {
-      img: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
-      emojie: "🏯",
+      img: defaultBannerImage,
+      emojie: "🥳",
    };
    const setDefaultImgAndEmojie = () => {
       if (pageData.hasOwnProperty(localKey)) {
@@ -130,8 +132,6 @@ const CustomBanner = ({ localKey, image }) => {
          [localKey]: { ...pageData[localKey], img: img },
       });
    };
-
-   console.log(pageData[localKey]);
    useEffect(() => {
       setDefaultImgAndEmojie();
    }, []);

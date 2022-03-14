@@ -34,7 +34,7 @@ const AbsoluteChild = styled.aside`
       rgba(0, 0, 0, 0.22) 0px 15px 12px;
    position: absolute;
    right: 1rem;
-   z-index: 2;
+   z-index: 2000;
    user-select: none;
    width: max-content;
    opacity: ${({ when }) => (when ? "1" : "0")};
@@ -42,6 +42,7 @@ const AbsoluteChild = styled.aside`
    transform: ${({ when }) =>
       when ? "translateZ(0) scale(1)" : "translate3d(60px,-100px,0) scale(.2)"};
    transition: all 0.25s ease;
+   outline: 2px solid ${({ theme }) => theme.shadow};
 
    @media screen and (max-width: 640px) {
       transform: ${({ when }) =>

@@ -10,7 +10,6 @@ const PostForm = ({ setShowForm, url }) => {
       itemTitle: "",
       itemImage: "",
    });
-   const [invalidPost, setInvalidPost] = useState(false);
 
    const resetForm = () => {
       setNewItem({
@@ -124,19 +123,16 @@ const PostForm = ({ setShowForm, url }) => {
                <i class="fa fa-link" aria-hidden="true"></i>
             </label>
          </MDButtonBar>
-         {!invalidPost ? (
-            <Button
-               style={{ display: "block", marginLeft: "auto" }}
-               onClick={() => {
-                  postTodo();
-               }}
-            >
-               <i className="fa fa-paper-plane"></i>
-               Create
-            </Button>
-         ) : (
-            <p>Invalid post</p>
-         )}
+
+         <Button
+            style={{ display: "block", marginLeft: "auto" }}
+            onClick={() => {
+               postTodo();
+            }}
+         >
+            <i className="fa fa-paper-plane"></i>
+            Create
+         </Button>
       </Form>
    );
 };
