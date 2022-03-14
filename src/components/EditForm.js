@@ -9,7 +9,8 @@ import { MDButtonBar } from "./MDButtonBar";
 
 const closeIconPosition = {
    right: "0rem",
-   top: "-5.5rem",
+   top: "-3.5rem",
+   fontSize: "3.5rem",
 };
 const EditForm = ({ itemId, taskId, task }) => {
    const URL = `${process.env.REACT_APP_MDB}/item/${taskId}/${itemId}`;

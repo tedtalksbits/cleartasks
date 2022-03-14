@@ -10,7 +10,7 @@ export const EditableInput = styled.input`
    background: #00000021;
    border: none;
    color: ${(props) => props.theme.text1};
-   font-size: 1rem;
+   font-size: 1.2rem;
    font-family: "Poppins", sans-serif;
    font-weight: 400;
    margin-top: 0.5em;
