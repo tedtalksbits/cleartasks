@@ -8,7 +8,6 @@ import Todo from "./Todo";
 import styled from "styled-components";
 import useLocalStorageState from "use-local-storage-state";
 import { PaginateButton } from "./PaginateBtn";
-
 const Container = styled.div`
    @media screen and (max-width: 750px) {
       div.mobile-pagination {
@@ -52,7 +51,7 @@ const RenderTable = ({ search, taskId, userId }) => {
       return item.itemTitle.toLowerCase().includes(search.toLocaleLowerCase());
    });
 
-   console.log(filteredData);
+   // console.log(filteredData);
 
    const updateStatusTodo = async (obj) => {
       await todoUpdate(editURL, obj);

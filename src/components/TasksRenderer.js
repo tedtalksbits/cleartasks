@@ -1,4 +1,5 @@
 import React from "react";
+
 import { CardGrid } from "./PageComponents";
 import { Task } from "./Task";
 export const TasksRenderer = ({ tasks }) => {
@@ -12,24 +13,19 @@ export const TasksRenderer = ({ tasks }) => {
          </>
       );
    }
-
    return (
       tasks && (
-         <>
-            <CardGrid>
-               {tasks.map((task, key) => (
-                  <Task
-                     key={key}
-                     link={`/cleartasks/tasks/${task._id}/${task.tasksName}`}
-                     text={task.tasksName}
-                     taskId={task._id}
-                     newItem={task.items.some(
-                        (item) => item.createdAt === today
-                     )}
-                  />
-               ))}
-            </CardGrid>
-         </>
+         <CardGrid>
+            {tasks.map((task, key) => (
+               <Task
+                  key={key}
+                  link={`/cleartasks/tasks/${task._id}/${task.tasksName}`}
+                  text={task.tasksName}
+                  taskId={task._id}
+                  newItem={task.items.some((item) => item.createdAt === today)}
+               />
+            ))}
+         </CardGrid>
       )
    );
 };
